@@ -1,0 +1,150 @@
+{
+  "prepared_on": "2026-11-17",
+  "schema_version": 1,
+  "sources": [
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/HTTP-OVER-TCP.ru.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "259a3699e58364241bfd0ed1cc73a248ddd2d08d14c8649f67a568c4798e63fd"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/PARITY.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "d29714d2d2c7ec434a4367a22175d2a6c08b05b59ed7dbed9bbc523091fde7ed"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/http-file-chunks.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "26e3b3e200ace9f2cb31321b60b77c51415177bf88f5bde5256fc5d5e06995a7"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/version-adaptive-client.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "d310405ec37239c109a2fbd141869881fcd0e2f067728b286820241c6c047fd4"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/bootstrap27-policy.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "66fc482add0040120aa7a00c9121785f89af745429b69b7851cd3476e03e773d"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/bootstrap27-policy-encrypted.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "18352e8b3d040c3c891c4162ba5e1d6f6426c6f27493dae2a85e910a998b6918"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/authentication-8.5.1.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "0f455f840fa7bea071747c8723849c8db763b5cdee1f9017e9a8c096d7e28d20"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/upload-network-break.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "8703c6c3ff8912bcd278097ea242d570b68ba614baef70bdf046ce2e3f144f82"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/docs/research/context-release-live.md",
+      "repository": "onec-research",
+      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
+      "sha256": "6f9f44732e9f6b6ffd8ee16835f66ab20bc9489676c6a09beb0131e597f3bed9"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/transport.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "e3a2e14ae6423ac170a69cad0527eae04af0d8556d5442ff3b72714e8fe352c7"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/text.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "4619a9b3e18a4594789e524d1f74a09eee1b7221cbaa8c2b37e83691f22c3abf"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/uuid.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "83ff2055388422aa4825456e5d23607279e15c8a9b9f97bc5a5aab28b6189d36"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/binary.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "78a8b2e488360394b3d37310b4835101bae8f7fbd01590fb6a2efbda37114b88"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/bootstrap.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "55b14e98de77811f52cf17c7f2e042b19a8a468d68a606930f243c685867d9b8"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/wire/http.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "f91628a14865513c57f8604d18a6bbc8135b48c80e6dfdb97b4cbb6146ce23b2"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/client.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "ebd3735d2ca396d4fde5b87a1350007d69282a6ce5e3c2b047bbb1dcfe187d0d"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/http.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "7f96a3d9aeab65ef79b522345dcf69aa270803408e3215f11ede146bd79d4f05"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "hash_basis": "git blob content at revision",
+      "path": "go-onec/connection.go",
+      "repository": "onec-client",
+      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
+      "sha256": "6180fd3ac028b41584c89bbcb3ff2b88cd4748acde267872f6d5bf369af762e3"
+    }
+  ]
+}
