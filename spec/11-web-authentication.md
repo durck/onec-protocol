@@ -131,6 +131,32 @@ statuses are 200/201/204; a nonempty body must decode without an exception.
 On success discard session and cookies. Local Close alone does not perform
 logout. Cleanup may be necessary for preauthentication sessions as well.
 
+### Observed application-start failure, separate from credential refusal
+
+The retained 2026-10-23 web observation on build 8.3.27.2342 reached V3's
+final C5 request but returned HTTP 500 without a final success proof. Its
+exception descriptions identified unavailable licensing. The following is only
+the non-sensitive structure of that observation (E13, source S063); descriptions,
+session values and native paths are not published:
+
+| Operation | HTTP | Outer exception (`clsid`, `reason`) | Inner exception (`clsid`, `reason`) |
+| --- | ---: | --- | --- |
+| Credential-free prelogin | 402 | `580392e6-ba49-4280-ac67-fcd6f2180121`, `402` | Not used for this classification |
+| Final V3 login request | 500 | `580392e6-ba49-4280-ac67-fcd6f2180121`, `-7` | `60c686dc-798f-4d17-aadb-a90156a16eb8`, `8`; the next inner level repeated this pair |
+| Cleanup logout after that failure | 500 | `580392e6-ba49-4280-ac67-fcd6f2180121`, `-3` | `60c686dc-798f-4d17-aadb-a90156a16eb8`, `1` |
+
+The logout description reported an absent/deleted session. Its HTTP 500 still
+does not satisfy the successful-logout contract. Preserve cleanup failure
+separately from the original login error. The class/reason pairs are diagnostic
+patterns from one exact-build observation, not a universal reason-code catalog:
+the inner class also occurs for different failures. A client can report a match
+as an observed license-failure pattern, without claiming that every reason 8
+or every HTTP 500 has that cause. Neither the final failure nor its cleanup
+establishes successful password authentication. A prelogin 402 sent before any
+password likewise is not proof that a supplied password was rejected.
+
+### Informational request
+
 GET `e1cib/about` with vrs-session is an observed informational operation; HTTP
 200 plus response JSON is accepted. It does not initialize application forms.
 

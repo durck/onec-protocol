@@ -559,6 +559,15 @@
       "sha256": "e6df0c39122a69204b8ce5195a63c026aa95c9e13ba59d962ed9e216078861cc",
       "source_id": "S062",
       "title": "Independent public-spec Go client and bounded Windows login acceptance"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E13",
+      "hash_basis": "retained observation file bytes",
+      "kind": "sanitized exact-build research observation",
+      "sha256": "feb830c15143148b0dfeae8bd98eaa8267fd9b306331eeb319c9c1ee2364570e",
+      "source_id": "S063",
+      "title": "Build-27 web application-start and cleanup failure structure"
     }
   ]
 }

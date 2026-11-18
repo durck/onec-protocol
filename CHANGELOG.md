@@ -4,6 +4,9 @@
 
 ### Added
 
+- Bounded web application-start/cleanup exception patterns from a retained
+  build-27 licensing failure, distinguished from password refusal and successful
+  logout; descriptions and private runtime details are excluded.
 - Password-mode server qualification and phase-specific acceptance criteria:
   native and web profiles, transport policy, credential results, application
   readiness and cleanup remain distinct; no new live password result is claimed.
