@@ -14,6 +14,24 @@ advertised version. For automatic selection, GET
 `scripts/mod_main_loader.js?sysver=<served-version>` and inspect, without
 executing it, the actual login construction/proof-consumption code.
 
+An observed served publication entry on build 8.3.18.1208 omits the semicolon
+after the quoted VERSION literal and continues with another `var` declaration
+on the next line. A bounded literal reader must preserve line boundaries:
+
+```javascript
+var VERSION = "8.3.18.1208"
+var BASE = "/ExampleBase"
+```
+
+This is a synthetic illustration of the observed declaration form. Builds
+8.3.22.1709 and 8.3.27.2342 entries used a semicolon. Do not require a semicolon
+universally, or discard line boundaries and then mistake the next declaration
+for an expression suffix. Conversely, a newline followed by an operator can
+continue an expression; accepting every newline is not a safe substitute.
+Reject ambiguous/multiple VERSION declarations and unsupported expressions
+without executing page scripts. Version discovery is not a login operation;
+its HTTP status must not be reported as a login response if discovery fails.
+
 | Recognized contract | Selection |
 | --- | --- |
 | Legacy login target construction and appended cred query | Legacy |

@@ -4,6 +4,8 @@
 
 ### Added
 
+- Observed semicolon-free VERSION declaration in the build-18 publication entry,
+  with line-boundary and discovery-versus-login diagnostic requirements.
 - Bounded web application-start/cleanup exception patterns from a retained
   build-27 licensing failure, distinguished from password refusal and successful
   logout; descriptions and private runtime details are excluded.
