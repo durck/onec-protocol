@@ -1,150 +1,555 @@
 {
-  "prepared_on": "2026-11-17",
-  "schema_version": 1,
+  "prepared_on": "2026-11-18",
+  "schema_version": 2,
   "sources": [
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/HTTP-OVER-TCP.ru.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "259a3699e58364241bfd0ed1cc73a248ddd2d08d14c8649f67a568c4798e63fd"
+      "claim_id": "E01",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "259a3699e58364241bfd0ed1cc73a248ddd2d08d14c8649f67a568c4798e63fd",
+      "source_id": "S001",
+      "title": "Native HTTP encapsulation baseline"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/PARITY.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "d29714d2d2c7ec434a4367a22175d2a6c08b05b59ed7dbed9bbc523091fde7ed"
+      "claim_id": "E01",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "d29714d2d2c7ec434a4367a22175d2a6c08b05b59ed7dbed9bbc523091fde7ed",
+      "source_id": "S002",
+      "title": "Compatibility and evidence boundaries"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/http-file-chunks.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "26e3b3e200ace9f2cb31321b60b77c51415177bf88f5bde5256fc5d5e06995a7"
+      "claim_id": "E07",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "26e3b3e200ace9f2cb31321b60b77c51415177bf88f5bde5256fc5d5e06995a7",
+      "source_id": "S003",
+      "title": "Native HTTP file chunk separators"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/version-adaptive-client.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "d310405ec37239c109a2fbd141869881fcd0e2f067728b286820241c6c047fd4"
+      "claim_id": "E08",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "d310405ec37239c109a2fbd141869881fcd0e2f067728b286820241c6c047fd4",
+      "source_id": "S004",
+      "title": "Eight-client capability comparison"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/bootstrap27-policy.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "66fc482add0040120aa7a00c9121785f89af745429b69b7851cd3476e03e773d"
+      "claim_id": "E11",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "66fc482add0040120aa7a00c9121785f89af745429b69b7851cd3476e03e773d",
+      "source_id": "S005",
+      "title": "Build-27 initial policy exchange"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/bootstrap27-policy-encrypted.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "18352e8b3d040c3c891c4162ba5e1d6f6426c6f27493dae2a85e910a998b6918"
+      "claim_id": "E11",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "18352e8b3d040c3c891c4162ba5e1d6f6426c6f27493dae2a85e910a998b6918",
+      "source_id": "S006",
+      "title": "Build-27 encrypted policy exchange"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/authentication-8.5.1.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "0f455f840fa7bea071747c8723849c8db763b5cdee1f9017e9a8c096d7e28d20"
+      "claim_id": "E10",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "0f455f840fa7bea071747c8723849c8db763b5cdee1f9017e9a8c096d7e28d20",
+      "source_id": "S007",
+      "title": "Build-85 credential exchange"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/upload-network-break.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "8703c6c3ff8912bcd278097ea242d570b68ba614baef70bdf046ce2e3f144f82"
+      "claim_id": "E09",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "8703c6c3ff8912bcd278097ea242d570b68ba614baef70bdf046ce2e3f144f82",
+      "source_id": "S008",
+      "title": "Upload outcomes after a network break"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/docs/research/context-release-live.md",
-      "repository": "onec-research",
-      "revision": "b0c0d55204b33e8f6694eaacbcf2b06fe1fff087",
-      "sha256": "6f9f44732e9f6b6ffd8ee16835f66ab20bc9489676c6a09beb0131e597f3bed9"
+      "claim_id": "E09",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "6f9f44732e9f6b6ffd8ee16835f66ab20bc9489676c6a09beb0131e597f3bed9",
+      "source_id": "S009",
+      "title": "Released-context recovery observations"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/transport.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "e3a2e14ae6423ac170a69cad0527eae04af0d8556d5442ff3b72714e8fe352c7"
+      "claim_id": "E09",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "40e81df0febf3c5f023c526dc5ab2de2bbc62d6ddaa5b664af4543ab1db1a39c",
+      "source_id": "S010",
+      "title": "Server synchronization and retained-result lifecycle"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/text.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "4619a9b3e18a4594789e524d1f74a09eee1b7221cbaa8c2b37e83691f22c3abf"
+      "claim_id": "E12",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "8b39b8c0c913e4727c90d5cbb58eaeb705ed8aa11925f2915ac62cf621dcf459",
+      "source_id": "S011",
+      "title": "Explicit Kerberos provider"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/uuid.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "83ff2055388422aa4825456e5d23607279e15c8a9b9f97bc5a5aab28b6189d36"
+      "claim_id": "E12",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "d89694de0cfffdfc310f23940c166d78ddc8b47234cadd0904fff4cfb38fd30b",
+      "source_id": "S012",
+      "title": "Explicit NTLMv2 provider"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/binary.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "78a8b2e488360394b3d37310b4835101bae8f7fbd01590fb6a2efbda37114b88"
+      "claim_id": "E13",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "e53f1b81b9c9d4d9c90f119bc97f374a1fab2f7aaced316c240071160fe2b7e9",
+      "source_id": "S013",
+      "title": "Web login and session lifecycle"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/bootstrap.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "55b14e98de77811f52cf17c7f2e042b19a8a468d68a606930f243c685867d9b8"
+      "claim_id": "E13",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "59cdd2dbe24542ada3440e781fd1520881d138f92f93c7565e1bdcdd8c1e811a",
+      "source_id": "S014",
+      "title": "Web service and application access boundaries"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/wire/http.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "f91628a14865513c57f8604d18a6bbc8135b48c80e6dfdb97b4cbb6146ce23b2"
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "a8c696da0e4304b3b5c0d3f4c6cd82445c13c7ea18d490f17cbec38a79b48d18",
+      "source_id": "S015",
+      "title": "Native administration methods and collections"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/client.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "ebd3735d2ca396d4fde5b87a1350007d69282a6ce5e3c2b047bbb1dcfe187d0d"
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "61b97e46a95a02926726673f36b68b4f5473fd0b11ddd5fa81c705896dad91f2",
+      "source_id": "S016",
+      "title": "Worker infobase enumeration"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/http.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "7f96a3d9aeab65ef79b522345dcf69aa270803408e3215f11ede146bd79d4f05"
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "5e81478b2c08ec96ce5bf892a9497987f0b9d1a1de25f77c42f5f9c1f151aede",
+      "source_id": "S017",
+      "title": "Scalar values and tracked collections"
     },
     {
       "availability": "retained separately; not bundled",
-      "hash_basis": "git blob content at revision",
-      "path": "go-onec/connection.go",
-      "repository": "onec-client",
-      "revision": "df0ef828690c65643ce92080045ccbbbfd56e2be",
-      "sha256": "6180fd3ac028b41584c89bbcb3ff2b88cd4748acde267872f6d5bf369af762e3"
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "e21e8d9bf77516c864c6b38070e4dc583b40a85cc91308de3315bc3b984acc30",
+      "source_id": "S018",
+      "title": "Form values and presentation reconciliation"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "ef2bb59bbee9f62c30c294419fa57211249b4bb2933f57a4b7941f897bd7fb0a",
+      "source_id": "S019",
+      "title": "Dynamic descriptor and control changes"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "920b12e296f063112d326587f5868d468462e995b221e32a1cdb20b6b107132e",
+      "source_id": "S020",
+      "title": "Form close and lifecycle boundaries"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E16",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "8cbaf1dba82a5209fbb7889594a9d73963e90806d2359536751f9a3180b3ad71",
+      "source_id": "S021",
+      "title": "Compact dynamic-list payloads"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E16",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "4eb59eb996c09fd5ad9b9abe8b33435adedb6b484635a764146f1cb105adc4f3",
+      "source_id": "S022",
+      "title": "Bounded dynamic-list windows"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E17",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "4aa7e80b8041847497a9fd7f79b9cbf82319916ed8c2330eca23a3b3eeaad405",
+      "source_id": "S023",
+      "title": "File chunks and storage ownership"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E18",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "045d2d7a3a99145c13cfea3e3312c68a29bf38e1c128efafb93f44a3b19921ae",
+      "source_id": "S024",
+      "title": "Application object and command route catalog"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E04",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "8e28c0358a382ca264a15f26dbf7edda1423c5a0a732613d0230a649465dfb24",
+      "source_id": "S025",
+      "title": "Native scalar tags and numeric representation"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E04",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "f44e7561a56d89e823e2d18b76e423f559635ebee0aff80e2f2875cd20275564",
+      "source_id": "S026",
+      "title": "Native string packing and length fields"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E02",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "da952e6469bcb41b02e55498bf4039f5e1fb22577356c17657c741be0b100de2",
+      "source_id": "S027",
+      "title": "Native framing and control consumers"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E08",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "90b7694276f9ff812c85d8d53972d8d61dbdd7716fb8dfd44f91f9d07f0c8aca",
+      "source_id": "S028",
+      "title": "Exact-build compatibility boundaries"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E18",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "f3b9977baf0c58a0e23180c37c626aaf408056dff8b21f9eef79ebc3585ad316",
+      "source_id": "S029",
+      "title": "Server roles and interface separation"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E18",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "2adf8d496059c0eb721cc526b48736ed57db12e1a73950fb04a07ec568bac40f",
+      "source_id": "S030",
+      "title": "Preauthentication access boundaries"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E18",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "research report",
+      "sha256": "5b23383fab978eadae3fc29fc96b8bc9c4fb42290198bdb3fedb0cf67799dd39",
+      "source_id": "S031",
+      "title": "Web resources and metadata access boundaries"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E02",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "e3a2e14ae6423ac170a69cad0527eae04af0d8556d5442ff3b72714e8fe352c7",
+      "source_id": "S032",
+      "title": "Incremental record framing"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E03",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "4619a9b3e18a4594789e524d1f74a09eee1b7221cbaa8c2b37e83691f22c3abf",
+      "source_id": "S033",
+      "title": "Text record codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E03",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "83ff2055388422aa4825456e5d23607279e15c8a9b9f97bc5a5aab28b6189d36",
+      "source_id": "S034",
+      "title": "UUID codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E04",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "78a8b2e488360394b3d37310b4835101bae8f7fbd01590fb6a2efbda37114b88",
+      "source_id": "S035",
+      "title": "Binary ListStream codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E05",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "55b14e98de77811f52cf17c7f2e042b19a8a468d68a606930f243c685867d9b8",
+      "source_id": "S036",
+      "title": "Bootstrap request and reply codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E06",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "f91628a14865513c57f8604d18a6bbc8135b48c80e6dfdb97b4cbb6146ce23b2",
+      "source_id": "S037",
+      "title": "HTTP encapsulation codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E10",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "ebd3735d2ca396d4fde5b87a1350007d69282a6ce5e3c2b047bbb1dcfe187d0d",
+      "source_id": "S038",
+      "title": "Native application authentication orchestration"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E06",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "7f96a3d9aeab65ef79b522345dcf69aa270803408e3215f11ede146bd79d4f05",
+      "source_id": "S039",
+      "title": "Application HTTP construction"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E05",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "6180fd3ac028b41584c89bbcb3ff2b88cd4748acde267872f6d5bf369af762e3",
+      "source_id": "S040",
+      "title": "Connection and discovery state machine"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E12",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "8d64187f4e9993d0340d6811d445268b4529ee4634224820ae850ec747ab5457",
+      "source_id": "S041",
+      "title": "Final provider proof validation"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E10",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "b465e638c4b1fa30ae51100f4c4f22abaf36079188bccf5d413caeef9471845a",
+      "source_id": "S042",
+      "title": "Credential exchange state machines"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E10",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "106be26b923b726c0536e5a9c56dfd93bc83de276cc2260756601e05e36b58c2",
+      "source_id": "S043",
+      "title": "Credential cryptographic primitives"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E12",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "496e9d00126c954210fc050ab682c9b21577593a22328375a3430bd5a4e2c5b0",
+      "source_id": "S044",
+      "title": "Independent NTLMv2 context"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E12",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "2b63e9750994f48dd8631c0349c7822bea1ad910a8d575ab071ec5f48ac313b0",
+      "source_id": "S045",
+      "title": "Independent Kerberos context"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E13",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "29aada4c1756ef1ad8de2b17b9f9ef92d8caff86424e18a1a467a7866ab25ede",
+      "source_id": "S046",
+      "title": "Web login orchestration"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E13",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "4865f6c004ddb0a271cfaeff7b8ab6485eb75c98e6ac33af12a8e5451893ec25",
+      "source_id": "S047",
+      "title": "Served web contract selection"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "1f1a9bf38eafc0338ee8b968722c3cad703caae9ffe2141f70809e0ea724932b",
+      "source_id": "S048",
+      "title": "Administration envelopes and cluster profiles"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "1817652d41da5ecbafb61bde709213847fba6b816e49f893d807891a90ec74d8",
+      "source_id": "S049",
+      "title": "Administration identity collections"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "f0b10d12068507440fa19c3ff9a263101e84f8d59d9cbb836071272f1cbc5731",
+      "source_id": "S050",
+      "title": "Administration session collections"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "afde5ebddfae64d1a207a68e10b5d4fcb82633acbde1787d14ce4f3ec14e4d53",
+      "source_id": "S051",
+      "title": "Administration session extensions"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E14",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "dabd25a57f840b140bbfa8c0808f1dd3cc1acc6bec61b1aa408f4748f4522241",
+      "source_id": "S052",
+      "title": "Administration method signatures"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "7b89ce2f665873c4580a9425cc86cb6a7275a7a0c07f3f5f81d9882d9a0137bd",
+      "source_id": "S053",
+      "title": "Ordered form-context request schema"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "202c869188094322143896a700a8eebad7e6cfb824ac49477246dd47d5f16191",
+      "source_id": "S054",
+      "title": "Form calls and reconciliation routing"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "d78b2d047a406bca3ef28c707c446ff4d08b672189d1c77c51971b0b4fcdc992",
+      "source_id": "S055",
+      "title": "Form opening, methods and close"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "5d672b1ed8267545008fe9202ce89ea011d9c144001f92d5b6465656c5315062",
+      "source_id": "S056",
+      "title": "Typed scalar payload codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E15",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "3264ea439817bcfc8223741ba07d58915a18476f12cd0e7fe19491b5e301b5d4",
+      "source_id": "S057",
+      "title": "Tracked collection delta codec"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E16",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "fe2791939c5622bab70e3e58e2ecdfacfa48b03489b7389a980f8fc22587934e",
+      "source_id": "S058",
+      "title": "Ordered dynamic-list query schema"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E16",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "1a06401a71f3417dc059c9eed5360abf240dc2b2b0e17422f42663a75a02473b",
+      "source_id": "S059",
+      "title": "Dynamic-list response decoder"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E17",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "3b61ebd3f11c3e281111c92dbbded79ee5ee2aa84c9434e3002dc5a8c2b44a08",
+      "source_id": "S060",
+      "title": "Processing uploads and no-context calls"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E17",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "implementation source",
+      "sha256": "574de415d50154620ca3be3d67fe8183ea8c9fb34d6d59e00dd8b29bf890a0c3",
+      "source_id": "S061",
+      "title": "Processing confirmation contract"
     }
   ]
 }

@@ -1,77 +1,184 @@
-# Bootstrap and remote context
+# Native bootstrap, discovery and context release
 
-Profile: `native-18`. Evidence: E01, E05 and E08 in the
-[register](../evidence/README.md). Request shapes are source-derived; the native
-baseline path has bounded live confirmation. This chapter is not yet a complete
-bootstrap implementation recipe.
+Profile: `native-18`; exact build 8.3.18.1208. Evidence: E01, E05, E08.
+This chapter specifies the complete implemented successful bootstrap path,
+including manager discovery. Unknown native alternatives remain explicit.
+Positions are zero-based. Logical lists use text or binary serialization as
+marked, followed by transport framing. Text UUIDs are unquoted tokens.
 
-## Phase order
+## Constants and notation
 
-1. Optionally connect to the cluster manager and obtain a worker selection.
-2. Open the worker TCP stream and consume its five-byte greeting.
-3. Send Control3 and a client process GUID.
-4. Exchange bootstrap records, introduction data and provider tokens.
-5. Obtain the dynamic remote context UUID, called `target` here.
-6. Query the HTTP interface on that target.
-7. Start HTTP RPC exchanges and application authentication.
+| Symbol | UUID |
+| --- | --- |
+| Root | `e23134a2-14ff-4160-ba5f-ccef04e3786f` |
+| ConnectInterface | `7f58f27d-5ad8-43a1-aa1e-c982f41bed5c` |
+| SelectInterface | `73b7d3a3-fe0b-4fdf-ba70-b74b3589ffc3` |
+| ManagerContext | `4ecea39c-b4c9-453e-aed0-ce8a24cc71c2` |
+| WorkerContext | `1e01900d-82fd-413a-bfe5-571a4c30a685` |
+| UUIDType | `ae135932-4f94-44df-92c1-c91f15a92848` |
+| BlobType | `671507fd-50a9-4b63-b70e-58b3d364f48f` |
+| RemoteType | `3ace6d91-51bb-4344-9388-c8105ad4ad11` |
+| ScalarType | `ba5edc33-8936-4212-9ed2-485e759203aa` |
+| URLType | `dd5dcb0e-62b5-4d01-8305-6f87bbc772c6` |
+| HTTPInterface | `bc15bd01-10bf-413c-a856-ddc907fcd123` |
 
-The manager and worker can use configured ports. Port numbers are not fields
-of HTTPFile and must not be hardcoded as protocol constants. Direct access to
-a known worker omits the client's manager selection step.
+Define `S(x) = ["S", x]`, `U = ["U"]`,
+`UUID(x) = ["#", UUIDType, [1, x]]`.
+Text bootstrap blobs use `TB(b) = ["#", BlobType, [B64(b)]]`, where B64 is
+standard padded Base64 emitted as an **unquoted token**. For empty bytes the
+last list is empty. This differs from binary SecurityBlob encoding.
 
-## Introduction payloads
+## Inputs and identities
 
-The reference request payload is:
+An application client needs an endpoint, infobase, advertised platform version,
+application name and fresh security-provider state. The established baseline
+advertises `8.3.18.1208` and `1CV8C`. These identify the client; they do not
+discover the server version. Native V2 password login was studied with a mobile
+application profile; changing identity does not establish compatibility.
+
+Generate separate process, application client (`clnId`) and worker bootstrap
+(`last`) UUIDs. Manager and worker in one discovery flow share the process UUID.
+A manager uses zero `last`; a worker uses a fresh UUID. The computer-name string
+is client input; documentation examples use a synthetic `CLIENT-EXAMPLE`.
+
+| Connection | Context kind | Selector string |
+| --- | --- | --- |
+| Manager | ManagerContext | `RegMngrCntxt:RegMngrCntxt` |
+| Worker | WorkerContext | `<infobase>:<infobase>` |
+
+## Connect one context
+
+1. Create provider state and obtain its introduction identity string.
+2. Open TCP and read the exact greeting `53 F5 C6 1A 7B`.
+3. Send `22 48 55 B5 || GUID_LE(processUUID)`, with no End marker.
+4. Choose a request counter. The reference chooses 1000..30999 randomly; this
+   is a client convention, not a native requirement.
+5. Send the introduction inside the bootstrap request below.
+6. Parse the incomplete reply and decode its introduction acknowledgment.
+7. Drive the provider, sending each output token in a new bootstrap request
+   and incrementing the RPC counter for every leg.
+8. Require a completed reply, a remote context UUID and verified local provider
+   completion. Retain the UUID as `target` for later RPCs.
+
+## Introduction bytes
 
 ```text
-ASCII("V8IntroTicketReq") || u16LE(len(name_utf8)) || name_utf8 || 00
+request = ASCII("V8IntroTicketReq") || u16LE(len(identity_utf8))
+          || identity_utf8 || 00
+
+ack = ASCII("V8IntroTicketAck") || u16BE(len(target_utf8)) || target_utf8
+      || u16BE(len(package_utf8)) || package_utf8
 ```
 
-The request-side local validation requires nonempty, valid UTF-8 without an
-embedded NUL and a byte length at most 65535. The terminating NUL is not counted.
+The request's terminating NUL is not counted. Identity is nonempty UTF-8 without
+NUL and fits the 16-bit byte length. Both acknowledgment strings are nonempty,
+without NUL or trailing bytes. Length byte order differs between request and
+acknowledgment. Here target is the **provider target string**, not the RPC UUID.
+The implemented path accepts package `Negotiate`; static newer-build research
+also identifies `Kerberos` selection without complete live coverage.
 
-The acknowledgment payload is parsed as:
+## Bootstrap request: text
+
+Serialize this 28-element list with a UTF-8 BOM:
 
 ```text
-ASCII("V8IntroTicketAck") || u16BE(len(first_utf8)) || first_utf8
-                         || u16BE(len(second_utf8)) || second_utf8
+[
+  0, Root, counter, 4, ConnectInterface, 0, 1, 11,
+  0, S(selector), 0, UUID(contextKind),
+  0, S(application), 0, S(computerName),
+  2, TB(token), 1, 0, S(advertisedVersion),
+  0, S("1ru_RU"), 0, S("1ru_RU"), 0, UUID(last), 1
+]
 ```
 
-The two acknowledgment strings are nonempty in the accepted schema and have
-no trailing NUL or trailing bytes. The **length byte order differs** between
-request and acknowledgment. These are inner payloads, not standalone TCP
-messages. Their complete placement in every provider exchange remains outside
-this draft.
+Keep context kind, selector, application and last fixed through the exchange.
+Only token and counter change. The locale strings and unexplained numeric
+positions retain observed values; no unsupported field semantics are inferred.
 
-## Interface query
+## Bootstrap reply: text
 
-After bootstrap returns `target`, the request is a text list:
+The top level is `R, 0`; R has 20 or 21 fields:
+
+| Position | Required / interpreted value |
+| ---: | --- |
+| 0 | `1` |
+| 1 | Opaque reply field; not correlated by the retained reader |
+| 2 | `1` |
+| 3 | `U`, or `["#", RemoteType, [remoteUUID]]` when complete |
+| 4..9 | `11, 0, 0, 0, 0, 2` |
+| 10 | `TB(returnedToken)` |
+| 11 | `1` |
+| 12 | `["B", completed]`, completed is 0 or 1 |
+| 13..17 | `0, 0, 0, 0, 1` |
+| 18 | `U` when incomplete; `["#", ScalarType, integer]` when complete |
+| 19 | `0` for 20 fields; `1` for 21 fields |
+| 20 | Extended-form field; semantics/type not established here |
+
+The blob list contains zero or one unquoted Base64 token. Strictly decode it
+to bytes. Before completion, positions 3 and 18 must both be U. The generic
+reader permits U at position 3 on completion, but an application bootstrap
+cannot proceed without a remote UUID. Completion on the introduction response
+is rejected by the implemented path.
+
+## Provider loop
+
+Start with `Step(securityTarget, emptyInput)`. Send its output token even if
+the provider already reports local completion. If the server stays incomplete,
+require a nonempty returned token and feed it to the next Step. The reference
+permits three provider legs; this is a local bound.
+
+On server completion, feed any nonempty final token to the provider. It must
+verify it, finish, and return **no further output token**. If the final token
+is empty, local completion must already be established. The server flag alone
+is insufficient, particularly for Kerberos AP-REP verification. See
+[security providers](08-security-providers.md).
+
+## Interface query: text
 
 ```text
-<BOM>{0,target,counter,1,interfaceGUID}
+request: <BOM>{0,target,counter,1,interfaceUUID}
 ```
 
-For the HTTP interface, `interfaceGUID` is
-`bc15bd01-10bf-413c-a856-ddc907fcd123`. Apply record framing after text encoding.
-The current reply reader accepts one three-element list beginning and ending
-with integer `1`; it does not establish semantics for every intermediate value.
+The application HTTP/selection query reader accepts one three-element reply
+list beginning and ending with `1`; its middle field is uninterpreted.
+Administration uses the last field as an interface method count under the
+separate [administration contract](12-administration.md).
 
-## Release
+## Manager selection: binary
 
-The context release request is a binary list:
+Bootstrap the manager, query SelectInterface, then send:
 
 ```text
-[0, target, counter, 0, 0]
+[0, target, counter, 4, SelectInterface, 0, 3, 7,
+ 0, S(""), 0, S(""), 0, S(infobase), 0, S(application),
+ 0, UUID(clientUUID), 1, 1]
 ```
 
-The current accepted release reply is one two-element list beginning with
-integer `1`. Complete reply correlation, failure variants and intermediate
-field semantics require further specification.
+The reply is a 14-field list followed by top-level integer 2:
 
-Release refers to the RPC context. Application logout, local socket/provider
-cleanup and eventual server-session disposal are distinct outcomes. See
-[session lifecycle](05-session-lifecycle.md).
+```text
+[1, field1, 3, 7, 0, 0, 0, 0, 0, 1, workerEndpoint,
+ 1, ["#", URLType, [1, urlText]], 0], 2
+```
 
-Build **8.3.27.2342** has an additional initial policy-envelope boundary.
-Do not apply this phase description to that build as a complete byte recipe;
-see the [version matrix](06-version-matrix.md).
+workerEndpoint is a direct or typed S string; urlText is a string. field1 is
+not interpreted by the retained reader. Validate the returned endpoint. The
+reference pins the manager host and uses only the selected port, so it does
+not establish general multi-host routing. Release and close the manager, then
+bootstrap the worker. Direct worker connections skip discovery. Query
+HTTPInterface before the first HTTP RPC.
+
+## Release: binary
+
+```text
+request: [0, target, counter, 0, 0]
+reply:   [1, field1]
+```
+
+The reply is one list, with no trailing scalar. field1 remains uninterpreted.
+Release requires synchronized framing; never send it into a partially consumed
+record. Application logout precedes release when a session is owned. Release,
+socket closure and server-session disposal are distinct outcomes.
+
+For exact build 8.3.27.2342, apply the [policy transform](10-native27-policy.md)
+to each record payload before escaping. It does not replace bootstrap or login.

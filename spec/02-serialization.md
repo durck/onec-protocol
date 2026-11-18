@@ -31,21 +31,53 @@ Each atom starts with one tag byte: `code = tag & 0x1F`,
 | `00` | None | Structural flags only; bare zero is not a value |
 | `01..0A` | None | Integer `code - 1`, in the range 0..9 |
 | `0B` | One byte | Octet; scalar integer or one-byte data according to context |
+| `0C` | One byte | Negative integer magnitude |
 | `0D` | Two bytes LE | Unsigned integer |
+| `0E` | Two bytes LE | Negative integer magnitude |
 | `0F` | Four bytes LE | Unsigned integer |
+| `10` | Four bytes LE | Negative integer magnitude |
+| `11` | Eight bytes LE | Unsigned integer |
+| `12` | Eight bytes LE | Negative integer magnitude |
+| `13` | Four bytes LE | IEEE-754 binary32 bits |
+| `14` | Eight bytes LE | IEEE-754 binary64 bits |
 | `15` | 16 bytes | GUID in the order defined below |
+| `16` | Immediately nested raw-byte atom | Numeric decimal text |
+| `17` | u8 element count, then 2 times count bytes | UTF-16LE code units |
+| `18` | u16LE element count, then 2 times count bytes | UTF-16LE code units |
+| `19` | u64LE element count, then 2 times count bytes | UTF-16LE code units |
 | `1A` | u8 byte length, then data | Raw bytes |
 | `1B` | u16LE byte length, then data | Raw bytes |
+| `1C` | u64LE byte length, then data | Raw bytes |
 
 An empty byte sequence uses `01`, the same compact form as integer zero. It is
 the enclosing schema that distinguishes them. Raw bytes are not intrinsically
-UTF-8. This draft does not specify negative integers, floating point, Numeric,
-wide strings or long raw atoms; their absence here does not imply native absence.
+UTF-8. The extended tags above come from exact-build native scalar/string
+studies; not every tag has been observed on a live application connection.
+Negative integers store a positive magnitude, not two's complement. Floating
+zero retains its floating tag and payload, rather than becoming integer `01`.
 
 For the synthetic canonical examples, integers 0..9 use the compact form,
 10..255 use `0B`, 256..65535 use `0D`, and larger uint32 values use `0F`.
 Raw data uses `01` when empty, `0B` for one byte, `1A` for 2..255 bytes and `1B`
 for 256..65535 bytes. These sender choices do not rule out other native encodings.
+
+Wide strings use the byte family when **every** 16-bit unit is at most FF;
+otherwise the entire value uses `17..19`. There is no four-byte length form.
+Lengths count UTF-16 units, including both halves of a surrogate pair. Native
+counted paths retain embedded NUL and unpaired surrogates; rejecting malformed
+Unicode is a stricter client policy. The one-unit packed form is `0B` plus
+its low byte. Examples: `A,0100` = `17 02 41 00 00 01`; U+1F600 =
+`17 02 3D D8 00 DE`; `A,00FF` = `1A 02 41 FF`.
+
+The Numeric writer uses integer tags for suitable integral values of magnitude
+less than 10^18, and otherwise `16` followed immediately by a raw atom holding
+plain decimal text, without an intervening separator. Its normal decimal
+rendering removes unnecessary fractional zeros and does not use an exponent.
+The native decimal reader can consume a numeric prefix and ignore a suffix;
+it does not implement scientific notation. An independent client can validate
+the complete decimal string more strictly, but must retain exact digits rather
+than convert through binary floating point. Native zero GUID can use `01`;
+explicit `15` plus sixteen zero bytes is also represented by the implementation.
 
 ## Structural flags
 

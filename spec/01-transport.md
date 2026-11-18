@@ -48,7 +48,8 @@ Preserve partial token prefixes across TCP reads. After `Escape`, wait if the
 available following bytes could still become a special token. A complete special
 token is appended literally to the record and does not create a control event.
 The reference decoder preserves an Escape followed by a non-token as literal
-bytes; this is an implementation behavior, not a native malformed-input guarantee.
+bytes; selected native reader inspection corroborates this behavior. Other
+malformed-input behavior remains incompletely characterized.
 
 An unescaped End emits the accumulated record. Control3 consumes its next
 16 bytes without applying record-token parsing to them. Control events do not

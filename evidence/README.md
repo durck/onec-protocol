@@ -1,11 +1,11 @@
 # Evidence register
 
 This specification is a curated synthesis of retained research and a separately
-maintained implementation. Source files are identified by repository-relative
-path, revision and SHA-256 in [sources.json](sources.json). The manifest contains
-identifiers and hashes, not source excerpts or raw experimental payloads.
-Source hashes cover Git blob content at the recorded revision, independently
-of checkout line-ending conversion.
+maintained implementation. Source files have neutral IDs, subject titles,
+claim IDs and SHA-256 in [sources.json](sources.json). The public manifest does
+not expose local paths, private repository names, machine identifiers or source
+excerpts. A separate unpublished receipt retains the source-location mapping.
+Hashes cover committed source bytes before checkout line-ending conversion.
 
 The source repositories and raw evidence are **not bundled and may not be
 publicly accessible**. A hash binds an input; it does not independently verify
@@ -17,14 +17,23 @@ The [synthetic vectors](../vectors/README.md) are the reproducible public portio
 | ID | Claim / source subject | Basis and limit |
 | --- | --- | --- |
 | E01 | Native layering and build-18 baseline: historical HTTP-over-TCP guide and parity report | Synthetic fixtures and reported bounded live path; old chunk examples superseded by E07 |
-| E02 | Framing tokens, escaping and stream handling: `wire/transport.go` | Implementation source and synthetic verification; malformed-stream native behavior incomplete |
-| E03 | Text lists and GUID order: `wire/text.go`, `wire/uuid.go` | Implementation source and synthetic verification |
-| E04 | Selected binary atoms and specialized encoders: `wire/binary.go` | Implementation source; selected native token semantics corroborated by E07 |
-| E05 | Introduction, query and release request shapes: `wire/bootstrap.go` | Source-derived accepted subset, not a complete native state machine |
-| E06 | HTTP RPC envelopes and local validation: `wire/http.go` | Implementation source; local caps and permissive parsing are not native protocol rules |
+| E02 | Framing tokens, escaping and stream handling | Implementation and native consumer study; malformed-stream behavior incomplete |
+| E03 | Text lists and GUID order | Implementation source and synthetic verification |
+| E04 | Binary atoms, strings, Numeric and specialized encoders | Implementation plus exact-build native scalar/string studies |
+| E05 | Complete implemented bootstrap, manager selection, query and release | Source-derived state machine, bounded native-18 acceptance; unknown alternatives explicit |
+| E06 | HTTP RPC envelopes and local validation | Implementation source; local caps and permissive parsing are not native protocol rules |
 | E07 | HTTPFile continuation without `80`: HTTP file chunk report, 2026-11-12 | Exact native instructions, one retained native reply, synthetic regression and bounded live corrected request |
 | E08 | Authentication/version distinctions: parity, adaptive-client and build-27 policy reports | Static, original-client synthetic and bounded live results kept separate |
 | E09 | Cleanup and uncertain mutation after lost response: upload-break and context-live reports | Bounded live observations on 8.3.18.1208; no general lifetime or retry guarantee |
+| E10 | Native login and SecPswd V1/V2/V3 | V1/V3 original-code comparisons; V2 schema/synthetic evidence; new independent synthetic transcript comparison |
+| E11 | Build-27 n/c policy, RSA header, 3DES and IV progression | Original client with owned synthetic peers; no real build-27 native server proof |
+| E12 | SSPI, explicit NTLMv2 and Kerberos integration | OS-provider live baseline; portable providers synthetic, with standard protocol references |
+| E13 | Web prelogin/settings/login, served contract and access boundaries | Shipped-source and synthetic evidence; build-18 legacy and 18/27 Basic live subsets |
+| E14 | Administration RPC, collection profiles and worker enumeration | Build-18 bounded live subset; later original clients against synthetic peers |
+| E15 | Typed values, form calls, collections, presentation and synchronization | Build-18 source-derived schemas and bounded live scalar/form operations; general renderer/runtime unimplemented |
+| E16 | Dynamic-list windows and compact payloads | Retained native-18 payloads, independent decoding and bounded live windows |
+| E17 | Processing uploads, confirmation, chunks and storage | Build-18 bounded live subset; 18/27/85 source-derived chunk construction and ownership limits |
+| E18 | Route inventory, server roles and preauthentication surfaces | Static route contracts and bounded observations; no universal anonymous access or arbitrary execution |
 
 ## Exact shipped inputs
 
@@ -47,7 +56,12 @@ not part of the public test corpus.
 
 ## Publication verification
 
-The synthetic vectors were compared offline with the pinned product codec.
+The original synthetic vectors were compared offline with the retained codec.
+The expansion independently constructed eight complete SecPswd exchanges and
+eight password-key cases, compared them against the retained state machine,
+and constructed a bootstrap example. All identities, credentials, nonces and
+message bytes in that corpus are synthetic. The one-time generators and
+debugging/research tests are not published.
 The repository's independent checks cover published encodings, lengths and
 document links. They do not connect to a server or validate historical native
 receipts. See [vector scope](../vectors/README.md) before interpreting a green

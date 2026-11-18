@@ -1,0 +1,138 @@
+# Native application authentication
+
+Evidence: E08, E10. This starts after worker bootstrap and HTTP-interface query.
+Application and transport-provider credentials are separate. Build-18 Windows
+and legacy login have bounded live acceptance; native SecPswd V1/V3 have
+original-code synthetic evidence, and V2 has schema/synthetic evidence.
+
+## Common HTTP construction
+
+```text
+/e1cib/login?vl=ru_RU&version=<advertised-version>&clnId=<client-uuid>
+```
+
+Percent-encode parameter values; encode spaces as `%20`. Password modes append
+valueless `&nowa`. Later SecPswd requests append `&sid=<routing-uuid>` before
+nowa. The common native headers are illustrated with synthetic inputs:
+
+```http
+1C-BaseLocation: e1c://server/server.example/ExampleBase
+1C-ConnectString: Srvr="server.example";Ref="ExampleBase";
+User-Agent: 1CV8C
+1C-ApplicationName: 1CV8C
+Accept-Encoding: deflate
+Accept-Language: ru-RU
+Accept-Charset: utf-8
+Content-Length: <body-byte-count>
+```
+
+The profile/locale are the observed baseline, not universal requirements. Add
+Content-Type and Accept per operation. Carry the entire HTTP message in
+[HTTP RPC](04-http-rpc.md). Responses with Content-Encoding deflate use **raw
+DEFLATE** in this subset, without a zlib header. Bound expansion and require a
+complete stream. An optional UTF-8 BOM can precede XML, JSON or user-list text.
+
+## Inner security negotiation
+
+Start HTTP RPC with empty blob and securityFlag=0. A completed reply with empty
+token can supply HTTP immediately. An incomplete reply with empty token asks
+for inner security:
+
+1. Create fresh provider state, independent of outer bootstrap.
+2. Repeat the same logical HTTP PDU with V8IntroTicketReq and securityFlag=1.
+3. Parse V8IntroTicketAck from the reply blob; completion here is premature.
+4. Exchange provider tokens with securityFlag=1, repeating that PDU and
+   incrementing the RPC counter every time.
+5. Apply bootstrap's final-token verification; only then consume the HTTP PDU.
+
+All later RPCs use the continuation zero after counter, including negotiation
+legs. The first incomplete reply must not already contain a provider challenge
+in this implemented path. A completed preliminary reply permits first inner
+negotiation at later login, but established inner state is not silently
+renegotiated. Final completion requires an HTTP PDU.
+
+## Windows/OS identity
+
+Send an empty-body POST to login **without nowa**, Accept application/xml.
+Complete inner negotiation if requested. Require HTTP 200, valid vrs-session
+and valid application XML. No infobase username/password is submitted. The
+server must map the proven OS identity to an infobase user.
+
+## Legacy infobase password
+
+1. Empty POST login with nowa and Accept application/xml; require HTTP **402**.
+2. Construct `UTF8(username) || 08 || UTF8(password)`, standard padded Base64.
+3. Apply native wrapping below, then percent-encode it.
+4. Empty POST to the same target plus `&cred=<encoded-field>`.
+5. Require HTTP 200, session header and application XML.
+
+Wrapping: split Base64 into blocks of at most 1024 characters. Copy a block
+of at most 64 unchanged. For a longer block, write chunks of at most 64 and
+append CRLF after **every full chunk**, including an exact final full chunk.
+A short final chunk has no CRLF. Thus a whole 64-character value has no newline;
+a 128-character value has two CRLF pairs. URL escaping happens after wrapping.
+This is reversible credential encoding, not hashing.
+
+The local input contract excludes NUL, backspace, CR and LF, requires nonempty
+username, and limits username/password to 256/1024 Unicode scalar values.
+These size caps are local choices.
+
+A complete 401/402 credential refusal without session or Connection header can
+permit an explicitly requested fresh legacy attempt on synchronized state.
+This bounded client policy does not authorize replay after partial writes, lost
+replies, provider failures or SecPswd failures.
+
+## SecPswd HTTP placement
+
+Construct C1 using [SecPswd](09-secpswd.md). The native flow sends C1 directly,
+without the legacy preliminary POST or web settings exchange. For every client
+message, POST login with nowa, Content-Type application/json; charset=utf-8,
+Accept application/json, and `{"cred":"<base64-packet>"}`. No vrs-session or
+Pragma sync header is sent in this native login flow; sid carries routing.
+
+Each response must be HTTP 200 with valid vrs-session. Intermediate responses
+have a nonempty top-level cred string and no response/credAns4/credAns6. Feed
+cred to the state machine, which must return another client message. Extract
+sid from the header and require intermediate routing UUID stability.
+
+Final JSON uses `response.credAns4` for V1/V2 or `response.credAns6` for V3,
+inside the returned application object. Reject mixed challenge/application
+documents, both proof names, top-level final proofs or early completion.
+V1/V2 require two client POSTs, V3 three. Verify the final proof before declaring
+authentication. Retain the final session for cleanup even if proof/document
+validation then fails. An intermediate routing session is not an authenticated
+application session. The accepted flow allows final session identity to differ
+from intermediate routing identity.
+
+## Session and application documents
+
+Retain the **complete** vrs-session for later headers. To derive sid, the native
+reader accepts a UUID or Base64 whose decoded first 36 bytes form a UUID.
+Its Base64 normalization maps `-`→`+`, `_`→`/`, `.`→`=`, removes spaces/tabs and
+adds padding where possible. Reject malformed input and the zero UUID.
+The extracted UUID does not replace the complete session header.
+
+XML root: `{http://v8.1c.ru/8.2/mngsrv/ws}response`. Required direct children
+in namespace `http://v8.1c.ru/8.2/managed-application/core` are
+infoBaseInstanceID, config, user and seance in the baseline validator. Do not
+enable external entities or accept trailing documents. Optional scalar
+assemblyVersion, config and rolesID select metadata caches; structured config
+does not supply a scalar selector. JSON has corresponding application fields;
+rolesID can be a string or number. Selectors are not credentials.
+
+## Other endpoints
+
+| Operation | Request | Expected result |
+| --- | --- | --- |
+| Optional users | GET common login query at `/e1cib/users`; Accept text/plain | 200, UTF-8 names separated by CRLF |
+| Settings | Empty POST login with nowa, expect 402; GET common query at `/e1cib/additionalAuthSettings` | 200, decode body using HTTP headers |
+| Logout | POST `/e1cib/logout`, empty body, full vrs-session, `Pragma: sync=N` | 200 |
+
+The user-list flow requires completed security with an empty token and does
+not initiate inner negotiation. User/settings operations precede login in the
+retained implementation; availability depends on server configuration.
+
+Application sync is distinct from RPC counter. Increment it for synchronous
+session operations. The reference reserves initial state 1 and uses logout
+sync at least 2; this is not a universal initial-value claim for every flow.
+After logout, release RPC context and close both providers and the socket.

@@ -1,6 +1,6 @@
 # Version evidence and remaining work
 
-Evidence snapshot: 2026-11-17. The reports referenced here retain their original
+Evidence snapshot: 2026-11-18. The reports referenced here retain their original
 observation dates. No new live experiment was performed for this publication.
 
 | Build / profile | Established evidence | Not established |
@@ -25,23 +25,22 @@ reply and acceptance of a `c` reply with encrypted query/release. The mapped
 policy codes are `n/y/c/u = 0/1/2/4`. One studied default cipher mode used
 DES-EDE3-CBC with a 24-byte key and eight-byte IV.
 
-This is a limited observation, not a recommendation of that cipher, a complete
-negotiation recipe or proof of every policy/provider combination. Subsequent
-IV progression and the initial envelope need a dedicated exact-build chapter
-before this repository can claim implementable build-27 coverage.
+The [exact-build policy chapter](10-native27-policy.md) now specifies the initial
+envelope, asymmetric key exchange, padding and IV progression for n/c. This is
+implementable synthetic-peer coverage, not proof of a real build-27 server or
+every policy/provider combination.
 
 ## Next work
 
-1. Complete the native-18 bootstrap request/reply grammar, field correlations,
-   provider-independent state transitions and synthetic rejection examples.
-2. Specify application login/logout and session headers separately from outer
-   security negotiation; give each password scheme its own evidence table.
-3. Publish a complete independent parser test corpus, including fragmented
-   transport, malformed lengths, list flags and native exception records.
-4. Describe build-27 policy messages and IV progression with synthetic vectors;
-   add real-server evidence only when separately available.
-5. Add administration, web publication, metadata, forms and data operations as
-   separate profiles. Do not infer their schemas from shared route names.
+1. Obtain separately authorized real-server evidence for build-27 policy and
+   native SecPswd/provider combinations, without broadening synthetic claims.
+2. Recover the complete build-85 native envelope and policies y/u.
+3. Extend public synthetic conformance data for unknown parser variants and
+   schema tails; keep research debugging programs and captured tokens private.
+4. Recover general form descriptors, control/layout changes, lazy collections,
+   tree lists and asynchronous continuation; do not infer them from route names.
+5. Specify MFA, external authentication and password changes only after their
+   message contracts are established. See the [gap register](17-routes-and-errors.md#explicit-gaps).
 
 See the [evidence register](../evidence/README.md) for provenance and
 [contribution requirements](../CONTRIBUTING.md) for extending these claims.

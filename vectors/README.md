@@ -41,4 +41,29 @@ go vet ./...
 ```
 
 No test opens a socket, starts 1C, reads captured data or uses authentication
-material. Tests require no modules outside the Go standard library.
+material from a real account. Tests require no modules outside the Go standard library.
+
+## Authentication and bootstrap corpus
+
+[authentication.json](authentication.json) contains eight password hash/key
+vectors and eight complete credential exchanges: two each for V1/V2 and four
+V3 exchanges covering all hash modes. Packet names C1/S2/... indicate direction
+and sequence. Each gives standard Base64, decoded packet hex and, for encrypted
+whole packets, plaintext before padding (including CRC where applicable).
+The published toy user/password, keys and deterministic random streams are
+synthetic inputs, never captured authentication material. Use fresh secure
+randomness for actual clients.
+
+The local publication audit constructed every packet independently from the
+documented primitives and compared every client message and final state against
+the retained implementation. It also checked all eight hash/key outputs and
+rejected final-message reuse after completion. Those generators and debugging
+programs remain outside this repository. The existing public Go conformance
+suite checks the original wire corpus and document links; it does not replay
+the new credential state machines. Publication-time comparison is a separate
+verification result, not an additional live-server claim.
+
+[bootstrap.json](bootstrap.json) gives a synthetic worker introduction request
+as UTF-8 text, exact bytes and a framed record. It includes the BOM and unquoted
+Base64 token, a neutral computer label and fixed example UUID. It is the first
+bootstrap message, not an authenticated connection or reusable provider token.

@@ -29,21 +29,23 @@ talking to a synthetic server is **observed + synthetic**, not real-server
 acceptance. A model agreeing with itself is not independent evidence.
 
 Each chapter cites entries in the [evidence register](../evidence/README.md).
-The source manifest pins report/source hashes and revisions. Those sources are
+The source manifest pins report/source hashes under neutral identifiers. Those sources are
 retained separately and are not necessarily publicly accessible. The public
 synthetic vectors are reproducible; the historical native/live claims require
 the retained evidence or an independently authorized replication.
 
 ## Boundaries
 
-Included: transport framing, selected scalar encodings, bootstrap phase order,
-query/release request shapes, HTTP RPC envelopes, native file chunks and session
-ownership distinctions.
+Included: transport framing and scalar codecs; the complete implemented
+manager/worker bootstrap; native and web login; SecPswd V1/V2/V3 message
+algorithms; provider integration; build-27 n/c policy; selected administration
+methods and collections; typed form values, contextual calls, dynamic lists,
+file/storage operations and known route/error boundaries.
 
-Not yet specified end to end: all bootstrap response variants, password proof
-algorithms, administration interfaces, managed forms, application metadata,
-all errors, compression variants, multiplexing and complete newer-build policy
-negotiation. [The roadmap](06-version-matrix.md#next-work) records these gaps.
+Every complete contract is scoped to its evidence. Additional route catalogs
+and partially recovered schemas are explicitly marked. [The open boundaries](17-routes-and-errors.md#explicit-gaps)
+cover unknown variants, entire newer-build flows, all provider policies,
+general forms/runtime behavior and server-side lifetime guarantees.
 
 Byte examples are synthetic. Dynamic GUIDs, account names and application state
 from captures are not published. Fixed interface/type GUIDs are protocol

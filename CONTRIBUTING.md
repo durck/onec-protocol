@@ -18,10 +18,15 @@ Keep a later correction visible in the affected chapter and CHANGELOG. Update
 the version matrix when the strength or scope of evidence changes. Do not
 silently promote synthetic acceptance to real-server support.
 
-Publish minimal synthetic fixtures. Do not submit credentials, authentication
+Publish minimal synthetic fixtures. Do not submit real credentials, captured authentication
 tokens, cookies, tickets, captured session state, private host inventories,
 proprietary binaries or bulk decompiler/capture output. Fixed protocol constants
 and input hashes can identify a finding without redistributing its raw inputs.
+Clearly label public toy credentials and deterministically constructed tokens.
+Do not copy debugging tests, live probes, research harnesses, local absolute
+paths, private directory/repository names or workstation identifiers. Use neutral
+source IDs and hashes for provenance; keep location mappings outside this project.
+Review every staged file before publication, including JSON and generated metadata.
 
 Run from the repository root before submitting a change:
 
