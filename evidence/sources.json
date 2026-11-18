@@ -555,8 +555,8 @@
       "availability": "bundled: independent-client-2026-11-18.json",
       "claim_id": "E19",
       "hash_basis": "committed source bytes before checkout newline conversion",
-      "kind": "sanitized reported live acceptance summary",
-      "sha256": "cfeb1bb54750d4a154c6be45821d466e40939668382d8797565f775f598c4f0f",
+      "kind": "sanitized live acceptance and offline readiness summary",
+      "sha256": "e6df0c39122a69204b8ce5195a63c026aa95c9e13ba59d962ed9e216078861cc",
       "source_id": "S062",
       "title": "Independent public-spec Go client and bounded Windows login acceptance"
     }

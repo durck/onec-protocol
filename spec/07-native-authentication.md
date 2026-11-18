@@ -16,6 +16,12 @@ V1/V2/V3 internally; they are not extra HTTP fields. Do not send a guessed
 is specifically a **web settings** selector. V2's studied application label
 is `MobileClient`; other baseline examples use `1CV8C`.
 
+These labels specify the studied request profiles, not a guarantee that a
+server admits them. A live-confirmed native server/build selection for each
+SecPswd variant is still missing from this independent-client experiment.
+See [password acceptance prerequisites](18-client-guide.md#qualify-a-server-before-password-acceptance)
+before treating codec coverage as server compatibility.
+
 ```text
 /e1cib/login?vl=ru_RU&version=<advertised-version>&clnId=<client-uuid>
 ```

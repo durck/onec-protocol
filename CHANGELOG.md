@@ -4,6 +4,12 @@
 
 ### Added
 
+- Password-mode server qualification and phase-specific acceptance criteria:
+  native and web profiles, transport policy, credential results, application
+  readiness and cleanup remain distinct; no new live password result is claimed.
+- Independent password-readiness audit: complete synthetic Legacy and SecPswd
+  cleanup scenarios, a corrected stale-status diagnostic and a reproducible
+  frozen candidate; 93 local test events passed, without a live password claim.
 - Independent public-spec Go implementation acceptance: the same frozen first
   candidate passed direct-worker and manager-discovery Windows login/logout
   against the native-18 laboratory, with separate cleanup acknowledgments.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "claim_id": "E19",
   "date": "2026-11-18",
-  "scope": "Bounded public-spec native-18 Go implementation; Windows application login and cleanup only.",
+  "scope": "Bounded public-spec native-18 Go implementation; live Windows login/cleanup and separate offline password readiness.",
   "input_isolation": "Fresh agent conversation with public protocol/OS/library inputs; instructional filesystem boundary, not OS-enforced isolation.",
   "specification_commit": "4286bdfe9562e4abf0dba3ccbbaa27657ee8545b",
   "initial_client_commit": "4500da4ec4b76cf70e376b3c4e7c1e89ed99d6c6",
@@ -101,6 +101,33 @@
         "rpc_exchanges": 16,
         "logical_http_operations": 2
       }
+    ]
+  },
+  "password_readiness_audit": {
+    "evidence_kind": "offline synthetic verification; no live password acceptance",
+    "specification_commit": "79490845ab07f5e54c62fe38bc5d9fe61e23cc8d",
+    "client_commit": "ec01ebdd45bf27d723f934721529096ce6ce5186",
+    "executable_sha256": "084101ae0350fc8d35cd2a8f70c543ef858655d9501d28aa7de277626cadee1e",
+    "input_manifest_sha256": "95f9d0cdd03a87c1767b76fbba2cc65bf0429ce2a8849e0f340678dd8dfe149c",
+    "coordinator_reproduced_executable_hash": true,
+    "preceding_candidates_preserved": true,
+    "passing_test_events": 93,
+    "failed_test_events": 0,
+    "go_vet": "passed",
+    "regression_failed_before_fix": "Logout I/O failure retained the preceding login HTTP status.",
+    "runtime_change": "Reset per-operation HTTP status; add fixed credential-phase/progress diagnostics.",
+    "wire_or_crypto_changes": false,
+    "synthetic_coverage": [
+      "Legacy preliminary, credential, logout and release; inner negotiation at either login request",
+      "Legacy refusal and invalid-application cleanup",
+      "SecPswd V1/V2/V3 repeated PDUs during inner negotiation and complete cleanup",
+      "Negative final credential results despite HTTP 200; preserve final session for cleanup"
+    ],
+    "live_attempts": 0,
+    "outstanding_prerequisites": [
+      "Explicit Legacy test credential input",
+      "Qualified native V1/V2/V3 server/profile combinations",
+      "Matching transport implementation when a target requires native-27 policy or web publication"
     ]
   },
   "total_live_login_attempts": 4,

@@ -78,6 +78,48 @@ time limits as local policy; identify them separately from protocol limits.
 
 ## Independent verification
 
+### Qualify a server before password acceptance
+
+Implementing a credential codec does not identify a compatible server. Select
+the transport and application profile before submitting a password, and record
+the server build, selected profile and frozen client revision separately.
+
+| Selected profile | Established prerequisite / remaining qualification |
+| --- | --- |
+| Native Legacy | The studied native-18 handler consumes the credential query after the preliminary 402. It does not establish native SecPswd support. |
+| Native V1 | The published baseline uses `1CV8C`; a successful native V1 server/build combination has not been established by this independent experiment. |
+| Native V2 | The studied label is `MobileClient`. That label alone does not establish that a particular server admits the profile or selects V2. |
+| Native V3 | The baseline uses `1CV8C`. A newer advertised version does not implement a different record policy or establish server acceptance. |
+| Web Legacy / V1 / V3 | Use the separate [publication contract](11-web-authentication.md). Loader observations identify request construction, not successful password acceptance. No web V2 orchestration is specified. |
+
+The [native-27 policy](10-native27-policy.md) is a separate transport layer,
+not a SecPswd selector. A client implementing only native-18 framing cannot
+claim native-27 readiness by changing its version string. The specification
+currently provides no native on-wire negotiation that chooses V1/V2/V3 and no
+general matrix of live-confirmed server/profile combinations for these modes.
+Keep this missing qualification explicit; do not invent a query selector or
+try the same credential under successive schemes to discover it.
+
+For each qualified test, distinguish these outcomes:
+
+1. Transport/bootstrap completed and the selected HTTP operation was reached.
+2. Each expected credential message was processed; any required challenge
+   binding and final credential result were verified.
+3. The returned application document and session were accepted. An intermediate
+   routing session, HTTP 200, or an anonymous prelogin success is insufficient.
+4. Logout, remote context release and local cleanup completed, recorded as
+   separate outcomes.
+
+Record an HTTP status only for the operation that actually received it. If
+logout fails before receiving a response, its status is unknown; the preceding
+login status is not a logout result. Do not collapse transport errors, unsupported
+ingress, password refusal, additional-factor requirements, application-start
+failures or cleanup failures into a single "wrong password" outcome. A license
+error before final acceptance does not by itself prove or disprove the password
+exchange. Record the last validated phase and stop without automatic fallback.
+
+### Public corpus and live evidence
+
 The public corpus contains synthetic framing, GUID, integer, raw-byte, text,
 HTTPFile and HTTP RPC encodings, one worker introduction, eight password-key
 vectors and eight complete V1/V2/V3 exchanges. The new authentication transcripts

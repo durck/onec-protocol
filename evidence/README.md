@@ -34,7 +34,7 @@ The [synthetic vectors](../vectors/README.md) are the reproducible public portio
 | E16 | Dynamic-list windows and compact payloads | Retained native-18 payloads, independent decoding and bounded live windows |
 | E17 | Processing uploads, confirmation, chunks and storage | Build-18 bounded live subset; 18/27/85 source-derived chunk construction and ownership limits |
 | E18 | Route inventory, server roles and preauthentication surfaces | Static route contracts and bounded observations; no universal anonymous access or arbitrary execution |
-| E19 | [Independent public-spec Go client](../spec/20-independent-client.md) | Fresh-context public-input implementation, frozen before feedback; direct-worker and manager-discovery Windows login/logout passed on the authorized native-18 laboratory; no new live password/provider-family coverage |
+| E19 | [Independent public-spec Go client](../spec/20-independent-client.md) | Fresh-context public-input implementation, frozen before feedback; direct-worker and manager-discovery Windows login/logout passed on the authorized native-18 laboratory; separate password-readiness audit is synthetic only, with no new live password/provider-family coverage |
 
 ## Exact shipped inputs
 

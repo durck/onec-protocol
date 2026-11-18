@@ -156,3 +156,42 @@ acknowledged releases and successful local cleanup. There were **four total live
 login attempts, all successful**, across the two frozen candidates. The later
 two checks verify that the state correction preserved these working paths;
 they do not turn the synthetic no-inner or password cases into live evidence.
+
+## Password-mode readiness audit
+
+A subsequent public-only audit consumed public revision
+`79490845ab07f5e54c62fe38bc5d9fe61e23cc8d`. It added complete synthetic Legacy
+preliminary/credential/logout/release flows, including first inner negotiation
+at either login request, refusal and invalid-application cleanup. V1/V2/V3
+checks exercised unchanged credential PDUs during inner negotiation and rejected
+negative final credential results while retaining the full session for cleanup.
+All inputs were public contracts and toy vectors; no live password was submitted.
+
+The audit found one implementation diagnostic bug: failed logout I/O could
+retain the preceding login HTTP status. A regression failed before resetting
+status at the start of each logical operation and passed afterward. Fixed
+phase names, accepted-challenge counts and a final-credential-result Boolean
+now distinguish progress from application acceptance. Legacy/Windows have no
+SecPswd final result, so that Boolean remains false for those modes.
+Wire encoding, cryptography and request sequencing did not change.
+
+| Readiness artifact | Identity |
+| --- | --- |
+| Source commit | `ec01ebdd45bf27d723f934721529096ce6ce5186` |
+| Executable SHA-256 | `084101ae0350fc8d35cd2a8f70c543ef858655d9501d28aa7de277626cadee1e` |
+| Public-input manifest SHA-256 | `95f9d0cdd03a87c1767b76fbba2cc65bf0429ce2a8849e0f340678dd8dfe149c` |
+
+The coordinator repeated the offline suite: 93 passing test events, zero
+failures, and successful vet. Rebuilding with the recorded Go toolchain/options
+reproduced the executable hash exactly; both preceding candidates remained
+unchanged. The new source, diagnostics tests and executable remain outside this
+repository. No additional live acceptance is claimed for this candidate.
+
+The substantive remaining gap is [server/profile qualification](18-client-guide.md#qualify-a-server-before-password-acceptance).
+The native-18 experiment does not implement native-27 policy or web transport,
+and the public contract does not yet identify live-confirmed native V1/V2/V3
+server/profile combinations. Legacy also still needs an explicitly supplied
+test credential for this experiment. Obtaining those prerequisites and then
+performing live acceptance remain outstanding; synthetic results do not close
+that work. Non-ASCII password compatibility and unknown native exceptions
+retain their earlier evidence limits.
