@@ -7,6 +7,15 @@ original-code synthetic evidence, and V2 has schema/synthetic evidence.
 
 ## Common HTTP construction
 
+Select Windows, legacy, V1, V2 or V3 explicitly before submitting credentials.
+No native on-wire scheme-negotiation parameter has been established here.
+An advertised build, successful settings request, or bootstrap ScalarType value
+does not by itself select SecPswd. Native implementation selectors 0/1/2 mean
+V1/V2/V3 internally; they are not extra HTTP fields. Do not send a guessed
+`auth`, `code` or `version=1` parameter to force a native codec. The last form
+is specifically a **web settings** selector. V2's studied application label
+is `MobileClient`; other baseline examples use `1CV8C`.
+
 ```text
 /e1cib/login?vl=ru_RU&version=<advertised-version>&clnId=<client-uuid>
 ```
@@ -32,6 +41,16 @@ Content-Type and Accept per operation. Carry the entire HTTP message in
 DEFLATE** in this subset, without a zlib header. Bound expansion and require a
 complete stream. An optional UTF-8 BOM can precede XML, JSON or user-list text.
 
+`ServerName` in the two 1C headers is a configured logical server identity,
+normally the host without the TCP port. It is not the selected worker endpoint
+or the provider's target/SPN. The embedded native profile sends an origin-form
+request target, no Host header, no Connection header and no cookie jar. This
+is encapsulated HTTP; an ordinary HTTP library may add headers or reject a
+request that the native profile accepts. Web publication uses ordinary HTTP
+Host/TLS handling instead. Empty POSTs still send `Content-Length: 0` and a
+complete CRLF CRLF terminator. Header names are case-insensitive; body lengths
+count bytes. No HTTP chunked transfer coding is used in this subset.
+
 ## Inner security negotiation
 
 Start HTTP RPC with empty blob and securityFlag=0. A completed reply with empty
@@ -50,6 +69,19 @@ legs. The first incomplete reply must not already contain a provider challenge
 in this implemented path. A completed preliminary reply permits first inner
 negotiation at later login, but established inner state is not silently
 renegotiated. Final completion requires an HTTP PDU.
+
+Repeat the **same bytes**, including credential body and query, during the
+inner negotiation. Do not regenerate C1/nonces, change sid or increment
+application sync for a token leg. Only the enclosing RPC counter, token and
+security flag change. Ignore any intermediate PDU for application purposes;
+only the completed reply's PDU can satisfy the HTTP operation.
+
+For every subsequent logical HTTP operation after negotiation, start again
+with an **empty SecurityBlob and securityFlag=0**, retaining the established
+provider. Flag 1 belongs only to the introduction/token legs. If established
+security receives incomplete status or a nonempty new token, fail instead of
+restarting it. A provider returning localComplete=true still sends its output
+once; the enclosing reply and any final peer proof must also complete.
 
 ## Windows/OS identity
 
@@ -120,6 +152,22 @@ assemblyVersion, config and rolesID select metadata caches; structured config
 does not supply a scalar selector. JSON has corresponding application fields;
 rolesID can be a string or number. Selectors are not credentials.
 
+These validators have different scopes: native XML requires the four named
+children but does not recover their entire nested schemas. Native SecPswd JSON
+requires `response` and the correct proof; its metadata reader extracts optional
+cache selectors and does **not** require all four XML fields. Web application
+acceptance separately requires `user` and `config`. A synthetic minimal XML is:
+
+```xml
+<response xmlns="http://v8.1c.ru/8.2/mngsrv/ws"
+          xmlns:c="http://v8.1c.ru/8.2/managed-application/core">
+  <c:infoBaseInstanceID/><c:config/><c:user/><c:seance/>
+</response>
+```
+
+It demonstrates the bounded validator only, not a real server's full metadata.
+Do not infer session identity from `<seance>`: use the session header.
+
 ## Other endpoints
 
 | Operation | Request | Expected result |
@@ -133,6 +181,9 @@ not initiate inner negotiation. User/settings operations precede login in the
 retained implementation; availability depends on server configuration.
 
 Application sync is distinct from RPC counter. Increment it for synchronous
-session operations. The reference reserves initial state 1 and uses logout
-sync at least 2; this is not a universal initial-value claim for every flow.
+session operations. Start the local sync counter at **0**; the first ordinary
+synchronous application operation sends **1**. Login and its token legs send
+no sync header and do not advance it. Logout alone uses `max(lastSync,1)+1`, so
+immediate logout sends 2, and logout after operation 1 also sends 2. Never wrap
+after 2147483647. These are the retained client's bounded sequence rules.
 After logout, release RPC context and close both providers and the socket.

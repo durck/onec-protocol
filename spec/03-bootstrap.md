@@ -36,6 +36,13 @@ advertises `8.3.18.1208` and `1CV8C`. These identify the client; they do not
 discover the server version. Native V2 password login was studied with a mobile
 application profile; changing identity does not establish compatibility.
 
+The endpoint must include its role and explicit TCP port. A manager endpoint
+and a worker endpoint are different inputs; a greeting alone does not identify
+the role. The conventional manager port is 1541, but configuration can change
+it. Do not infer a worker port by adding to that number. The bounded profile
+uses IPv4 host:port endpoints and ASCII infobase/header names. Unicode names,
+IPv6 routing and arbitrary cluster failover are not established by this subset.
+
 Generate separate process, application client (`clnId`) and worker bootstrap
 (`last`) UUIDs. Manager and worker in one discovery flow share the process UUID.
 A manager uses zero `last`; a worker uses a fresh UUID. The computer-name string
@@ -59,6 +66,31 @@ is client input; documentation examples use a synthetic `CLIENT-EXAMPLE`.
    and incrementing the RPC counter for every leg.
 8. Require a completed reply, a remote context UUID and verified local provider
    completion. Retain the UUID as `target` for later RPCs.
+
+The introduction uses the chosen initial counter N **without** first incrementing
+it. Each provider leg, interface query, selection, HTTP RPC and release on that
+connection uses the next counter. A new manager/worker connection starts its
+own counter. Do not reset the worker counter after bootstrap or at login; do
+not wrap uint32 after exhaustion. Reply field1 is not an echo requirement.
+
+## Encoding dispatch
+
+After removing record framing (and policy protection, when selected), use the
+encoding of the outstanding operation, not a guess that all replies are binary:
+
+| Operation | Request | Successful reply | Top-level reply suffix |
+| --- | --- | --- | --- |
+| Bootstrap, including introduction/provider legs | BOM + text | BOM + text | `,0` after the reply list |
+| Interface query | BOM + text | BOM + text | None |
+| Manager selection | Binary ListStream | Binary ListStream | Integer 2 after the reply list |
+| HTTP RPC | Binary ListStream | Binary ListStream | Integer 2 after the reply list |
+| Release | Binary ListStream | Binary ListStream | None |
+
+Top-level binary values need the ordinary separator: a canonical suffix after
+an already closed list is `83` (separator | integer 2), not bare `03`.
+Do not append a second list-end marker for an implicit top-level container.
+Exceptional replies are a separate parse result; never proceed using a target
+from a failed bootstrap. Undecoded exceptions remain failures.
 
 ## Introduction bytes
 
@@ -141,6 +173,7 @@ request: <BOM>{0,target,counter,1,interfaceUUID}
 
 The application HTTP/selection query reader accepts one three-element reply
 list beginning and ending with `1`; its middle field is uninterpreted.
+For example, a synthetic successful reply is `<BOM>{1,0,1}` followed by End.
 Administration uses the last field as an interface method count under the
 separate [administration contract](12-administration.md).
 
@@ -161,12 +194,19 @@ The reply is a 14-field list followed by top-level integer 2:
  1, ["#", URLType, [1, urlText]], 0], 2
 ```
 
-workerEndpoint is a direct or typed S string; urlText is a string. field1 is
+workerEndpoint is the typed string `S("host:port")`, not a bare byte/string atom;
+urlText inside URLType is a direct string atom. field1 is
 not interpreted by the retained reader. Validate the returned endpoint. The
 reference pins the manager host and uses only the selected port, so it does
 not establish general multi-host routing. Release and close the manager, then
 bootstrap the worker. Direct worker connections skip discovery. Query
 HTTPInterface before the first HTTP RPC.
+
+The selected endpoint has form `host:decimalPort`, with port 1..65535. The
+returned URL field is parsed for structure but is not used as an HTTP URL,
+provider target or session token by this profile. Binary selection strings in
+the covered ASCII-name profile use byte-string atoms; the `S` discriminator is
+also a byte-string atom. This does not resolve non-ASCII name compatibility.
 
 ## Release: binary
 

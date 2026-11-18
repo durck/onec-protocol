@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "provenance": "Entirely synthetic HTTP orchestration; credential packets reference authentication.json. No server interaction or real session values.",
+  "encoding_notes": "Native entries describe the inner HTTP operation; apply chapter 7 common headers and chapter 4 RPC packaging. HTTP library header ordering is not specified. Web paths are relative to the selected publication. The served version here is an illustrative selector, not a compatibility claim. All JSON bodies are UTF-8, without BOM; calculate Content-Length from body bytes.",
+  "flows": [
+    {
+      "id": "native-v1-case0-settings-s2-false",
+      "profile": "native",
+      "credential_exchange": "v1-case0",
+      "settings_returns_s2": false,
+      "exchanges": [
+        {
+          "phase": "login",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"AQUAAABhbGljZSAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyvFkOA=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"okbZS7Y7cRddqnCp2ycavYi2AQtA7Uac4dlHgOI+kkg5r3Aj20RT8gqcLlCsTeRBAwmVqbRpRGdlm2D0AB386tlXMwNdCJxEFotx9XoA2hR3/zHvPeTKS9yLLlrlKQS9\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"tvI6SSU6aJoTgTilHG19ZpbOjJp0j12a1lVIF/6D1X+N86+9L52eF5Jx7U7j4SU7\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns4\":\"QV5I5B54wKrdSTt3xng2aEVH3pD8v3wGvxrIGQea1Rs=\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/logout",
+            "headers": {
+              "Pragma": "sync=2",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-v1-case0-settings-s2-false",
+      "profile": "web",
+      "credential_exchange": "v1-case0",
+      "settings_returns_s2": false,
+      "exchanges": [
+        {
+          "phase": "prelogin",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 402,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAxOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"exception\":{\"clsid\":\"580392e6-ba49-4280-ac67-fcd6f2180121\",\"inner\":{\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u\",\"seanceid\":\"ignored-factor-identifier\"},\"reason\":-1,\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAyOnN5bnRoZXRpYy1zZXNzaW9u\"}}"
+          }
+        },
+        {
+          "phase": "settings",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/additionalAuthSettings?sysver=8.3.27.2342",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"AQUAAABhbGljZSAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyvFkOA=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"AQUAAABhbGljZSAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyvFkOA=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA1OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"okbZS7Y7cRddqnCp2ycavYi2AQtA7Uac4dlHgOI+kkg5r3Aj20RT8gqcLlCsTeRBAwmVqbRpRGdlm2D0AB386tlXMwNdCJxEFotx9XoA2hR3/zHvPeTKS9yLLlrlKQS9\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000005",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"tvI6SSU6aJoTgTilHG19ZpbOjJp0j12a1lVIF/6D1X+N86+9L52eF5Jx7U7j4SU7\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns4\":\"QV5I5B54wKrdSTt3xng2aEVH3pD8v3wGvxrIGQea1Rs=\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/logout",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"root\":{}}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-v1-case0-settings-s2-true",
+      "profile": "web",
+      "credential_exchange": "v1-case0",
+      "settings_returns_s2": true,
+      "exchanges": [
+        {
+          "phase": "prelogin",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 402,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAxOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"exception\":{\"clsid\":\"580392e6-ba49-4280-ac67-fcd6f2180121\",\"inner\":{\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u\",\"seanceid\":\"ignored-factor-identifier\"},\"reason\":-1,\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAyOnN5bnRoZXRpYy1zZXNzaW9u\"}}"
+          }
+        },
+        {
+          "phase": "settings",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/additionalAuthSettings?sysver=8.3.27.2342",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"AQUAAABhbGljZSAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyvFkOA=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"okbZS7Y7cRddqnCp2ycavYi2AQtA7Uac4dlHgOI+kkg5r3Aj20RT8gqcLlCsTeRBAwmVqbRpRGdlm2D0AB386tlXMwNdCJxEFotx9XoA2hR3/zHvPeTKS9yLLlrlKQS9\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"tvI6SSU6aJoTgTilHG19ZpbOjJp0j12a1lVIF/6D1X+N86+9L52eF5Jx7U7j4SU7\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns4\":\"QV5I5B54wKrdSTt3xng2aEVH3pD8v3wGvxrIGQea1Rs=\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/logout",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"root\":{}}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "native-v2-case0-settings-s2-false",
+      "profile": "native",
+      "credential_exchange": "v2-case0",
+      "settings_returns_s2": false,
+      "exchanges": [
+        {
+          "phase": "login",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"ATCAfTTWf3Y1i3J0AOJXyHpLonql/NdhbJBcCB+S6bYmnv6nXOHYa7Ro+mHhhmTzExIw4ZJQW9aORsX2HOOVQeNXcBI1dV4N+MlCJTc0ltZtKQb8ugMxS+jI4NsuO+KwXMayBQAAAGFsaWNlzof7xw==\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"MH7c1+GSnCGXnHuBIfC0/EK9Io3svKufzfxFuFPpt1gdoVYtJISPshOtLYMKNDV3djFh9jP8\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"Gh8U9MLnXI2ZfWc4nG3L+iA5oNPYflBf89ZUtr2b/KotgIqD25hiHykleypdGvGZ/6PqzYwvCGGvUjygx58/bw==\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns4\":\"c3Vj\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/logout",
+            "headers": {
+              "Pragma": "sync=2",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "native-v3-case3-settings-s2-false",
+      "profile": "native",
+      "credential_exchange": "v3-case3",
+      "settings_returns_s2": false,
+      "exchanges": [
+        {
+          "phase": "login",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"OtSqGnyRCOBEKynir4W9SrSSQC2DZOYF1U36ZRjyv5I=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"Yrk524Z/z8JAooxL+NgOk4cg03wG+HG02Pd0NB+4Ypk=\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"AzDYNIJbZjXOVPFTor1ab+oMOZfddzSpICehVY+Yn8C+p0X5LX0tRWwQWNb4Lws8PV/KstVW\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"MJwPgPOYaX7rvuAyxCjMepUvZZTB9OQCnWGmISPLTr7nCuRkEE1ULmWRsWJmd6IUlTDv1DEb\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C5",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/login?vl=ru_RU\u0026version=8.3.18.1208\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004\u0026nowa",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"nd7A+BFqWXqlY9SIs883BgPYBiLw/VBLcZgsOBQYvPz8YGOrMC5C7k+vHBA+wL2vT6doanaFTmnF13Wl6GZmwg==\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns6\":\"c3Vj\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "/e1cib/logout",
+            "headers": {
+              "Pragma": "sync=2",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-v3-case3-settings-s2-false",
+      "profile": "web",
+      "credential_exchange": "v3-case3",
+      "settings_returns_s2": false,
+      "exchanges": [
+        {
+          "phase": "prelogin",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 402,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAxOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"exception\":{\"clsid\":\"580392e6-ba49-4280-ac67-fcd6f2180121\",\"inner\":{\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u\",\"seanceid\":\"ignored-factor-identifier\"},\"reason\":-1,\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAyOnN5bnRoZXRpYy1zZXNzaW9u\"}}"
+          }
+        },
+        {
+          "phase": "settings",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/additionalAuthSettings?sysver=8.3.27.2342\u0026version=1",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"OtSqGnyRCOBEKynir4W9SrSSQC2DZOYF1U36ZRjyv5I=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"OtSqGnyRCOBEKynir4W9SrSSQC2DZOYF1U36ZRjyv5I=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA1OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"Yrk524Z/z8JAooxL+NgOk4cg03wG+HG02Pd0NB+4Ypk=\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000005",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"AzDYNIJbZjXOVPFTor1ab+oMOZfddzSpICehVY+Yn8C+p0X5LX0tRWwQWNb4Lws8PV/KstVW\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA3OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"MJwPgPOYaX7rvuAyxCjMepUvZZTB9OQCnWGmISPLTr7nCuRkEE1ULmWRsWJmd6IUlTDv1DEb\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C5",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000007",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"nd7A+BFqWXqlY9SIs883BgPYBiLw/VBLcZgsOBQYvPz8YGOrMC5C7k+vHBA+wL2vT6doanaFTmnF13Wl6GZmwg==\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns6\":\"c3Vj\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/logout",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"root\":{}}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-v3-case3-settings-s2-true",
+      "profile": "web",
+      "credential_exchange": "v3-case3",
+      "settings_returns_s2": true,
+      "exchanges": [
+        {
+          "phase": "prelogin",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": ""
+          },
+          "response": {
+            "status": 402,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAxOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"exception\":{\"clsid\":\"580392e6-ba49-4280-ac67-fcd6f2180121\",\"inner\":{\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u\",\"seanceid\":\"ignored-factor-identifier\"},\"reason\":-1,\"seanceID\":\"Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAyOnN5bnRoZXRpYy1zZXNzaW9u\"}}"
+          }
+        },
+        {
+          "phase": "settings",
+          "client_packet": "C1",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/additionalAuthSettings?sysver=8.3.27.2342\u0026version=1",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDAzOnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"OtSqGnyRCOBEKynir4W9SrSSQC2DZOYF1U36ZRjyv5I=\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA0OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"Yrk524Z/z8JAooxL+NgOk4cg03wG+HG02Pd0NB+4Ypk=\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C3",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000004",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"AzDYNIJbZjXOVPFTor1ab+oMOZfddzSpICehVY+Yn8C+p0X5LX0tRWwQWNb4Lws8PV/KstVW\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA3OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"cred\":\"MJwPgPOYaX7rvuAyxCjMepUvZZTB9OQCnWGmISPLTr7nCuRkEE1ULmWRsWJmd6IUlTDv1DEb\"}"
+          }
+        },
+        {
+          "phase": "login",
+          "client_packet": "C5",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/login?version=8.3.27.2342\u0026nowa=\u0026nooida=\u0026clnId=22222222-3333-4444-8555-666666666666\u0026sid=77777777-8888-4999-8aaa-000000000007",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8"
+            },
+            "body": "{\"cred\":\"nd7A+BFqWXqlY9SIs883BgPYBiLw/VBLcZgsOBQYvPz8YGOrMC5C7k+vHBA+wL2vT6doanaFTmnF13Wl6GZmwg==\"}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"response\":{\"config\":{},\"credAns6\":\"c3Vj\",\"passwordRequirementsComplianceStatus\":0,\"user\":{\"name\":\"alice\"}}}"
+          }
+        },
+        {
+          "phase": "logout",
+          "request": {
+            "method": "POST",
+            "target": "e1cib/logout",
+            "headers": {
+              "Accept": "application/json",
+              "Content-Type": "application/json; charset=utf-8",
+              "vrs-session": "Nzc3Nzc3NzctODg4OC00OTk5LThhYWEtMDAwMDAwMDAwMDA5OnN5bnRoZXRpYy1zZXNzaW9u"
+            },
+            "body": "{\"root\":{}}"
+          },
+          "response": {
+            "status": 200,
+            "headers": {},
+            "body": ""
+          }
+        }
+      ]
+    }
+  ],
+  "rejection_cases": [
+    "missing-final-proof",
+    "mixed-proof-names",
+    "mixed-challenge-and-application",
+    "top-level-final-proof",
+    "missing-native-session",
+    "wrong-settings-method",
+    "missing-application-session",
+    "unknown-second-factor",
+    "changed-native-intermediate-routing",
+    "wrong-login-sid"
+  ]
+}

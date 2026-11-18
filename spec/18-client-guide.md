@@ -85,6 +85,12 @@ were constructed by an independent encoder and compared with the retained
 implementation's entire state machine. They contain deliberately public toy
 credentials, deterministic randomness and decoded packet bytes.
 
+The [bootstrap/authentication audit](19-bootstrap-auth-audit.md) adds a complete
+16-exchange native session and seven native/web HTTP flows. It records concrete
+corrections, including typed selection endpoints and first-operation sync=1,
+plus the limits of the source-independent executable check. A blind independent
+implementation and live interoperability are still outstanding.
+
 Conformance data can establish encoder/decoder agreement. It cannot establish
 server acceptance, negotiated permissions or a full 1C replacement. Use the
 [version matrix](06-version-matrix.md) to choose which statements your client

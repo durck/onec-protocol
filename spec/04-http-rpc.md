@@ -33,6 +33,12 @@ the same context. This envelope continuation is unrelated to HTTPFile chunks.
 `securityFlag` is 0 or 1. Fixed fields retain their observed values; a complete
 official IDL signature has not been recovered.
 
+Bootstrap and interface-query messages do not count as the first HTTP RPC.
+Consume the initial HTTP envelope on the first attempted HTTP RPC and use the
+continuation envelope for every later one, including introduction/provider
+legs and logout. If that attempt has incomplete I/O, retire the stream rather
+than reset the envelope selector. On a fresh worker context the selector resets.
+
 `target` identifies the remote RPC object. `counter` is the RPC exchange counter,
 not the HTTP Content-Length or the application synchronization number.
 
@@ -99,9 +105,12 @@ C0 0B 23 95 FD 07 15 67 A9 50 63 4B B7 0E 58 B3 D3 64 F4 8F
 C0 01 01 20 20
 ```
 
+Both tokenLength and tokenBytes are encoded atoms: the bytes are **not** copied
+without a tag. For synthetic token hex `01 02 03`, the inner list is
+`C0 04 1A 03 01 02 03 20` (integer 3, then a three-byte raw atom).
 The length must match the token byte count. An empty token still has its typed
-object; omitting the field changes the envelope. Synthetic vectors use only
-an empty blob and contain no authentication token.
+object; omitting the field changes the envelope. The transcript corpus includes
+clearly labeled fake provider tokens solely to exercise this representation.
 
 ## Reply envelope
 
@@ -116,7 +125,8 @@ and trailing integer `2`:
 `field1` is deliberately unnamed: this reader does not validate its semantics.
 `fileOrUndefined` is HTTPFile or `["U"]`. The Boolean flag must be 0 or 1.
 Native exception records are a separate branch, not ordinary HTTP error PDUs.
-The complete exception grammar and correlation rules remain outside this draft.
+Selected shapes are in [exceptions](17-routes-and-errors.md#native-exception-records);
+complete coverage and general reply correlation remain unresolved.
 
 The source also accepts a bounded empty response with a final CRLF instead of
 the normal blank-line separator, only when Content-Length is zero. This

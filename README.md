@@ -31,6 +31,7 @@ protocol. Newer-build observations have separate evidence labels.
 | [Files and storage](spec/16-files-and-storage.md) | Uploads, attachment, explicit confirmation and storage ownership |
 | [Routes and errors](spec/17-routes-and-errors.md) | Additional known surfaces, native exceptions and reconciliation |
 | [Independent client guide](spec/18-client-guide.md) | Implementation sequence and end-to-end state ownership |
+| [Bootstrap/authentication audit](spec/19-bootstrap-auth-audit.md) | Corrected ambiguities, complete synthetic sessions and remaining implementation limits |
 | [Evidence register](evidence/README.md) | Claim-to-source mapping and exact input identities |
 | [Synthetic vectors](vectors/README.md) | Machine-readable examples and offline checks |
 
@@ -62,7 +63,10 @@ the published examples; it does not establish interoperability with a server.
 
 Start with the [independent client guide](spec/18-client-guide.md). The examples
 include complete synthetic V1/V2/V3 credential exchanges and a worker bootstrap
-introduction. These are public conformance data, not copied debugging captures
+introduction, plus manager-to-logout and native/web HTTP orchestration traces.
+The [implementation audit](spec/19-bootstrap-auth-audit.md) separates offline
+verification from outstanding independent/live interoperability. These are
+public conformance data, not copied debugging captures
 or research test programs. Source provenance uses neutral identifiers and hashes.
 
 See [CONTRIBUTING](CONTRIBUTING.md) for the evidence required for a new claim and

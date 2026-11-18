@@ -11,6 +11,11 @@ not recommended password-storage design.
 `B8(x)=u8(byteLength(x)) || x`; `B32(x)=u32LE(byteLength(x)) || x`.
 Text is UTF-8. Complete packets use canonical standard padded Base64 with no
 whitespace or alternate alphabet.
+Lengths count encoded **bytes**, not characters. Validate B8 <=255 and B32
+against the available buffer before slicing. Packet literals 01/03 denote
+single binary bytes; they are not ASCII digits. Fully consume fields before
+accepting a packet; CRC covers the complete preceding plaintext at its stated
+layer, not the outer Base64 text or ciphertext.
 
 `CRC(x)=x || u32LE(CRC32-IEEE(x))`, reflected IEEE CRC-32, initial/final XOR
 FFFFFFFF; check value for ASCII 123456789 is CBF43926. Verify CRC where the
@@ -74,6 +79,9 @@ requires result exactly ASCII suc; finalNoise is parsed then ignored.
 
 Generate 32 random bytes Rc. Derive both mode-0 keys as above and encrypt Rc
 under each independently with fresh padding.
+V2 always emits **both** encrypted alternatives, even if K0=K1. Only V1's
+candidate-decryption loop deduplicates equal keys. Do not apply that V1
+optimization to V2's C1 layout.
 
 ```text
 C1 = Base64(CRC(01 || B8(ENC(K0,Rc,messageIV))
@@ -108,6 +116,8 @@ In S2, hashMode is binary 0..3; sensitiveByte is binary 0/1, **not ASCII**.
 Parse serverNoise, derive PasswordKey using the received parameters, then
 generate 32 fresh bytes Rc. In S4 strongASCII is ASCII 0/1 and Rs is 32 bytes.
 V3 S4/C5 share V2 S2/C3's construction. S6 is raw suc without CRC/encryption.
+The S4 ASCII flag is separately validated; the retained flow does not require
+it to equal S2's binary sensitivity flag or rederive a different key from it.
 
 ## State and validation
 
@@ -124,3 +134,9 @@ caps are local policies. Codec text inputs are valid UTF-8 without NUL.
 Validate lengths, canonical Base64, CRC, padding count, modes, flags, V1 echo
 and key uniqueness, final proof, HTTP placement and routing continuity.
 Cryptographic acceptance, application-session creation and cleanup are separate.
+
+V2/V3's final suc is a completion marker, not an independent MAC or proof of
+server identity. Its enclosing exchange and provider validation still matter.
+The final proof field name does not change those cryptographic properties.
+The [audit and transcripts](19-bootstrap-auth-audit.md) exercise missing, early,
+repeated and negative final messages independently from HTTP 200/session receipt.

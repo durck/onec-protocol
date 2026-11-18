@@ -66,3 +66,10 @@ The repository's independent checks cover published encodings, lengths and
 document links. They do not connect to a server or validate historical native
 receipts. See [vector scope](../vectors/README.md) before interpreting a green
 test run as a compatibility claim.
+
+The subsequent [bootstrap/authentication audit](../spec/19-bootstrap-auth-audit.md)
+checked the published credential corpus with a standalone consumer, constructed
+16 complete native RPC pairs and seven HTTP credential flows, and separately
+compared native bytes/replies with the retained implementation. Its author had
+access to that implementation; it is not a blind clean-room or live-server proof.
+No additional historical acceptance claim or private source export was added.

@@ -67,3 +67,22 @@ verification result, not an additional live-server claim.
 as UTF-8 text, exact bytes and a framed record. It includes the BOM and unquoted
 Base64 token, a neutral computer label and fixed example UUID. It is the first
 bootstrap message, not an authenticated connection or reusable provider token.
+
+## Complete session and orchestration traces
+
+[native-session.json](native-session.json) supplies 16 exact RPC request/reply
+pairs, their framed records and semantic fields: manager discovery, worker
+bootstrap, inner security, Windows application login, logout and release.
+Its provider tokens are explicitly scripted ASCII stubs, not real NTLM/Kerberos.
+
+[login-orchestration.json](login-orchestration.json) supplies seven native/web
+credential flows (30 HTTP exchanges) using the published authentication packets.
+It covers V1/V2/V3 native placement, web V1/V3 settings with/without S2, full
+session retention, sid replacement and logout. It names ten rejection mutations.
+These are conformance data, not executable debugging tests or captured traffic.
+
+The [audit chapter](../spec/19-bootstrap-auth-audit.md) defines the file fields,
+expected transitions, mutations and publication-time validation. The existing
+public tests do not replay these new files; their separate offline check used
+only public inputs and the Go standard library, followed by a separate comparison
+with the retained codec. No actual client/server interoperability is implied.
