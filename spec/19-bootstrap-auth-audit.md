@@ -2,6 +2,10 @@
 
 Audit date: 2026-11-18. Evidence: E03, E05, E06, E08, E10 and E13.
 
+Subsequent result: a [fresh public-spec client experiment](20-independent-client.md)
+now provides bounded live Windows-login acceptance. This chapter preserves the
+earlier audit's own method and limits; its checks were not live-server tests.
+
 The documented native-18 subset is sufficient to construct the covered requests
 and implement the illustrated bootstrap/password state machines without private
 research inputs. That is a narrower conclusion than proving a new independent
@@ -173,8 +177,9 @@ the public inputs and rules.
 
 ## Remaining limits for an independent client
 
-- A genuine independent implementation and live interoperability run remain
-  outstanding. No server, native component or real account was used in this audit.
+- No server, native component or real account was used in this audit. The later
+  [fresh-client experiment](20-independent-client.md) supplies two bounded live
+  Windows-login paths; other profiles do not inherit that acceptance.
 - NTLM/Kerberos implementations still need their public standards or libraries;
   this repository documents their 1C integration, not every underlying standard.
 - The byte-comparison baseline covers ASCII endpoint/infobase identities and

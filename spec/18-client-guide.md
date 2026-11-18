@@ -88,8 +88,13 @@ credentials, deterministic randomness and decoded packet bytes.
 The [bootstrap/authentication audit](19-bootstrap-auth-audit.md) adds a complete
 16-exchange native session and seven native/web HTTP flows. It records concrete
 corrections, including typed selection endpoints and first-operation sync=1,
-plus the limits of the source-independent executable check. A blind independent
-implementation and live interoperability are still outstanding.
+plus the limits of the source-independent executable check. That audit did not
+include a fresh-agent implementation or a live server.
+
+It now has a [separate follow-up](20-independent-client.md): a fresh
+public-spec Go consumer completed the direct-worker and manager-discovery Windows
+login/logout paths on its first live attempts. Other profiles retain their
+previous evidence limits; the initial synthetic audit is not reclassified as live.
 
 Conformance data can establish encoder/decoder agreement. It cannot establish
 server acceptance, negotiated permissions or a full 1C replacement. Use the

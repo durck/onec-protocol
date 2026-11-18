@@ -44,6 +44,13 @@ otherwise preserve it. No extra Unicode normalization is introduced. ASCII-only
 or locale-specific casing is not equivalent for all input. Let D=UTF8(password).
 For modes 1..3 append ASCII(Base64(salt)); mode 0 ignores salt.
 
+The Unicode data version used by every shipped build has not been established.
+An implementation must record the version of its full-case mapping dependency
+when claiming non-ASCII compatibility; choosing a library version is not wire
+negotiation. All published password vectors currently use ASCII. They establish
+none of the version-sensitive non-ASCII cases, and the independent client
+experiment's Unicode 15.0.0 choice is not a platform-wide requirement.
+
 | Mode | Digest |
 | ---: | --- |
 | 0 | SHA-1(D) |

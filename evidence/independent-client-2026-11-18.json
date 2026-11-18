@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "claim_id": "E19",
+  "date": "2026-11-18",
+  "scope": "Bounded public-spec native-18 Go implementation; Windows application login and cleanup only.",
+  "input_isolation": "Fresh agent conversation with public protocol/OS/library inputs; instructional filesystem boundary, not OS-enforced isolation.",
+  "specification_commit": "4286bdfe9562e4abf0dba3ccbbaa27657ee8545b",
+  "initial_client_commit": "4500da4ec4b76cf70e376b3c4e7c1e89ed99d6c6",
+  "initial_executable_sha256": "ed746ebf31b6be9fc134ed38f2b709f89a35d7591a3e2babf4fbd9cff0bd4949",
+  "toolchain": "go1.25.4 windows/amd64",
+  "source_and_executable_availability": "retained separately; not bundled",
+  "target_build_evidence": "Service configuration identifies 8.3.18.1208; configured disk hashes match native-18 inputs. Loaded-image paths were not independently readable.",
+  "provider": "Current-process Windows SSPI Negotiate; actual negotiated package omitted from receipt.",
+  "infobase_password_supplied": false,
+  "offline": {
+    "passing_test_events": 54,
+    "failed_test_events": 0,
+    "go_vet": "passed",
+    "binary_fuzz_executions": 278075,
+    "text_fuzz_executions": 239086,
+    "native_transcript_rpc_pairs": 16,
+    "password_exchanges": 8,
+    "password_key_cases": 8,
+    "native_password_http_flows": 3
+  },
+  "first_live_runs": [
+    {
+      "scenario": "direct-worker/windows",
+      "attempt": 1,
+      "exit_code": 0,
+      "manager_bootstrap": "not_used",
+      "manager_release_acknowledged": "not_used",
+      "worker_bootstrap": true,
+      "http_interface_ready": true,
+      "inner_security_completed": true,
+      "login_http_status": 200,
+      "application_document_and_session_validated": true,
+      "logout_http_status": 200,
+      "worker_release_acknowledged": true,
+      "local_cleanup_reported_successful": true,
+      "rpc_exchanges": 10,
+      "logical_http_operations": 2
+    },
+    {
+      "scenario": "manager-discovery/windows",
+      "attempt": 1,
+      "exit_code": 0,
+      "manager_bootstrap": true,
+      "manager_release_acknowledged": true,
+      "worker_bootstrap": true,
+      "http_interface_ready": true,
+      "inner_security_completed": true,
+      "login_http_status": 200,
+      "application_document_and_session_validated": true,
+      "logout_http_status": 200,
+      "worker_release_acknowledged": true,
+      "local_cleanup_reported_successful": true,
+      "rpc_exchanges": 16,
+      "logical_http_operations": 2
+    }
+  ],
+  "limits": [
+    "No live legacy or SecPswd password acceptance in this experiment.",
+    "No claim of a particular negotiated package or live Kerberos mutual proof.",
+    "No independent observation of complete server-side object disappearance.",
+    "No application execution, web publication, native-27 or native-8.5 acceptance.",
+    "These local implementation/live checks are not run by specification CI."
+  ]
+}

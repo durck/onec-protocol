@@ -4,6 +4,9 @@
 
 ### Added
 
+- Independent public-spec Go implementation acceptance: the same frozen first
+  candidate passed direct-worker and manager-discovery Windows login/logout
+  against the native-18 laboratory, with separate cleanup acknowledgments.
 - Bootstrap/authentication implementation audit, a complete synthetic native
   session and seven native/web password HTTP flows with rejection cases.
 - Complete implemented manager/worker bootstrap and native login contracts;
@@ -21,6 +24,9 @@
 
 ### Corrected from historical research
 
+- Clarified that accepted application login forbids new inner negotiation even
+  if no inner provider was created, and made unspecified Unicode casing versions
+  explicit for non-ASCII password compatibility.
 - Worker selection requires a typed `S` endpoint; the previously documented
   direct-string alternative failed the retained parser.
 - First ordinary application sync is 1, while immediate logout uses 2.

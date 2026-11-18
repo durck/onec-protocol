@@ -83,6 +83,14 @@ security receives incomplete status or a nonempty new token, fail instead of
 restarting it. A provider returning localComplete=true still sends its output
 once; the enclosing reply and any final peer proof must also complete.
 
+Track application acceptance separately from whether an inner provider was
+created. A completed **prelogin** HTTP response with no inner provider can be
+followed by the first negotiation at login. Once application login is accepted,
+every later HTTP reply must be security-complete with an empty token, even if
+login itself completed without creating an inner provider. An incomplete logout
+reply must not start a new provider exchange. Keep this boundary until the
+connection is retired; logout does not authorize another login on that context.
+
 ## Windows/OS identity
 
 Send an empty-body POST to login **without nowa**, Accept application/xml.

@@ -550,6 +550,15 @@
       "sha256": "574de415d50154620ca3be3d67fe8183ea8c9fb34d6d59e00dd8b29bf890a0c3",
       "source_id": "S061",
       "title": "Processing confirmation contract"
+    },
+    {
+      "availability": "bundled: independent-client-2026-11-18.json",
+      "claim_id": "E19",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized reported live acceptance summary",
+      "sha256": "adaf535fc87f3e172e5c5275c13b7c05424477e56fa96c2dddc1e00624524afe",
+      "source_id": "S062",
+      "title": "Independent public-spec Go client and bounded Windows login acceptance"
     }
   ]
 }
