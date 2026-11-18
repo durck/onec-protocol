@@ -124,10 +124,35 @@ another blocking bootstrap gap. The follow-up makes two boundaries explicit:
    version is not established for every shipped build. Record an implementation's
    choice and retain the non-ASCII compatibility limit explicitly.
 
-Legacy and SecPswd V1/V2/V3 are implemented and checked against public synthetic
-inputs, but were **not authenticated against this server in this experiment**.
+Legacy construction and SecPswd V1/V2/V3 are implemented, but were **not
+authenticated against this server in this experiment**. Offline checks covered
+legacy wrapping/XML components and the complete published SecPswd exchanges.
 No password credential was supplied for live use. Web publication, protected
 native-27 transport, native 8.5, IPv6, general multi-host routing, arbitrary
 exceptions, application execution and long-lived sessions remain outside this
 acceptance. The two successful sessions are a bounded result, not a reliability
 measurement or universal server/client compatibility claim.
+
+## Follow-up state regression and repeated live checks
+
+The implementation agent consumed the published clarification at
+`5267ccd63c7a5fa6b65083646da21814013cdea7` before changing the client. Eight
+synthetic negative subtests failed against the original runtime: late inner
+negotiation and login-after-logout, each for Windows and V1/V2/V3. These failures
+were found by state review and synthetic peers, not the laboratory server.
+
+The correction records application acceptance for the lifetime of the connection.
+It forbids those later transitions while preserving first negotiation at login
+after a completed preliminary HTTP response. The follow-up source is commit
+`e586136c7a023aa49435edc945d8593668e291d5`, executable SHA-256
+`d789f3ddc8e12ee94ebbd5cfd723d1a846f88b39ad2ba214c1b9e42fb14bf3bc`.
+Its 65 test events passed, including the eight previous failures and the allowed
+prelogin transition; vet passed. Parser fuzzing was not repeated for a state-only
+change. Initial tag, executable, source archive and receipts were preserved.
+
+The coordinator verified this new frozen candidate and repeated the two live
+Windows paths once each. Both again passed: 10/16 RPC pairs, login/logout 200,
+acknowledged releases and successful local cleanup. There were **four total live
+login attempts, all successful**, across the two frozen candidates. The later
+two checks verify that the state correction preserved these working paths;
+they do not turn the synthetic no-inner or password cases into live evidence.

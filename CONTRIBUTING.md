@@ -38,3 +38,13 @@ go vet ./...
 Default checks must remain offline. This repository owns specifications and
 small conformance examples; full client implementations and live probes belong
 in separate projects. List every maintained chapter in the root README.
+
+For an independent implementation experiment, record the allowed public inputs
+and begin with a fresh implementation context. Freeze source and binary hashes
+before live feedback. Keep laboratory setup and credentials with the operator;
+publish any missing protocol rule before the implementation consumes it.
+Distinguish instructional input isolation from an OS-enforced sandbox, initial
+attempts from later corrections, and implementation tests from specification CI.
+Preserve unsuccessful attempts and report authentication, logout, release and
+local cleanup separately. Only sanitized results and minimal synthetic examples
+belong here; keep the experimental client and debugging tests separate.

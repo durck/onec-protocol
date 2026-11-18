@@ -65,5 +65,44 @@
     "No independent observation of complete server-side object disappearance.",
     "No application execution, web publication, native-27 or native-8.5 acceptance.",
     "These local implementation/live checks are not run by specification CI."
-  ]
+  ],
+  "followup": {
+    "specification_commit": "5267ccd63c7a5fa6b65083646da21814013cdea7",
+    "client_commit": "e586136c7a023aa49435edc945d8593668e291d5",
+    "executable_sha256": "d789f3ddc8e12ee94ebbd5cfd723d1a846f88b39ad2ba214c1b9e42fb14bf3bc",
+    "initial_artifacts_preserved": true,
+    "negative_state_cases_failed_before_fix": 8,
+    "passing_test_events_after_fix": 65,
+    "failed_test_events_after_fix": 0,
+    "go_vet": "passed",
+    "change": "Persistent application-acceptance boundary forbids later inner negotiation and login reuse; completed prelogin still allows first negotiation at login.",
+    "live_runs": [
+      {
+        "scenario": "direct-worker/windows",
+        "exit_code": 0,
+        "success": true,
+        "login_http_status": 200,
+        "logout_http_status": 200,
+        "manager_release_acknowledged": "not_used",
+        "worker_release_acknowledged": true,
+        "local_cleanup_reported_successful": true,
+        "rpc_exchanges": 10,
+        "logical_http_operations": 2
+      },
+      {
+        "scenario": "manager-discovery/windows",
+        "exit_code": 0,
+        "success": true,
+        "login_http_status": 200,
+        "logout_http_status": 200,
+        "manager_release_acknowledged": true,
+        "worker_release_acknowledged": true,
+        "local_cleanup_reported_successful": true,
+        "rpc_exchanges": 16,
+        "logical_http_operations": 2
+      }
+    ]
+  },
+  "total_live_login_attempts": 4,
+  "failed_live_login_attempts": 0
 }

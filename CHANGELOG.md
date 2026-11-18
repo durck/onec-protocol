@@ -7,6 +7,9 @@
 - Independent public-spec Go implementation acceptance: the same frozen first
   candidate passed direct-worker and manager-discovery Windows login/logout
   against the native-18 laboratory, with separate cleanup acknowledgments.
+- Eight synthetic state regressions reproduced late negotiation/context reuse;
+  the client consumed the published clarification, and its corrected candidate
+  passed both live Windows paths again. Initial and follow-up evidence remain separate.
 - Bootstrap/authentication implementation audit, a complete synthetic native
   session and seven native/web password HTTP flows with rejection cases.
 - Complete implemented manager/worker bootstrap and native login contracts;

@@ -1,11 +1,14 @@
 # Version evidence and remaining work
 
 Evidence snapshot: 2026-11-18. The reports referenced here retain their original
-observation dates. No new live experiment was performed for this publication.
+observation dates. The original publication/audit was offline; the subsequent
+[independent-client experiment](20-independent-client.md) adds bounded live
+Windows-login acceptance without extending other profiles.
 
 | Build / profile | Established evidence | Not established |
 | --- | --- | --- |
 | Windows x64 8.3.18.1208 native | Live baseline connection/Windows login, bounded application operation and cleanup; corrected multi-chunk upload; retained native reply; static serializer studies | Complete protocol, all authentication providers, arbitrary operations or platforms |
+| Public-spec Go consumer, native-18 lab | First frozen client passed direct-worker and manager-discovery Windows login/logout, with release acknowledgments | Live legacy/SecPswd acceptance in this experiment; a specific negotiated provider; general reliability or application execution |
 | Windows x64 8.3.27.2342 native | Static policy envelope; original COM client query/release against owned synthetic n-policy and c-policy peers | Real build-27 native server acceptance and complete application compatibility |
 | 8.5.1.1529 | Selected shipped-code authentication paths and 56 matching synthetic V3 exchanges reported in research | Complete TCP envelope or native live application compatibility |
 | Other installed 8.3 clients | Selected administration calls accepted by original clients against a synthetic peer | End-to-end support for servers of those builds |

@@ -556,7 +556,7 @@
       "claim_id": "E19",
       "hash_basis": "committed source bytes before checkout newline conversion",
       "kind": "sanitized reported live acceptance summary",
-      "sha256": "adaf535fc87f3e172e5c5275c13b7c05424477e56fa96c2dddc1e00624524afe",
+      "sha256": "cfeb1bb54750d4a154c6be45821d466e40939668382d8797565f775f598c4f0f",
       "source_id": "S062",
       "title": "Independent public-spec Go client and bounded Windows login acceptance"
     }
