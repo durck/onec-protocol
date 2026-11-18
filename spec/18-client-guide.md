@@ -138,6 +138,11 @@ public-spec Go consumer completed the direct-worker and manager-discovery Window
 login/logout paths on its first live attempts. Other profiles retain their
 previous evidence limits; the initial synthetic audit is not reclassified as live.
 
+The [web continuation](21-independent-web-auth.md) separately passed Legacy
+login/logout on build 18 and processed V1/V3 challenges on builds 22/27 before
+final application-start failures. Keep its web-only scope and failed cleanup
+outcomes distinct from the successful native Windows path.
+
 Conformance data can establish encoder/decoder agreement. It cannot establish
 server acceptance, negotiated permissions or a full 1C replacement. Use the
 [version matrix](06-version-matrix.md) to choose which statements your client

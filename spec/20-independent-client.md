@@ -195,3 +195,8 @@ test credential for this experiment. Obtaining those prerequisites and then
 performing live acceptance remain outstanding; synthetic results do not close
 that work. Non-ASCII password compatibility and unknown native exceptions
 retain their earlier evidence limits.
+
+The subsequent [web password continuation](21-independent-web-auth.md) extends
+the same experimental codebase with a separate HTTP publication transport.
+Its Legacy success and incomplete V1/V3 runs do not change the native-only
+acceptance boundaries recorded above.

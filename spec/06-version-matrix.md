@@ -3,7 +3,8 @@
 Evidence snapshot: 2026-11-18. The reports referenced here retain their original
 observation dates. The original publication/audit was offline; the subsequent
 [independent-client experiment](20-independent-client.md) adds bounded live
-Windows-login acceptance without extending other profiles.
+Windows-login acceptance. A separate [web continuation](21-independent-web-auth.md)
+adds Legacy login/logout and incomplete V1/V3 challenge-to-final-request checks.
 
 | Build / profile | Established evidence | Not established |
 | --- | --- | --- |
@@ -13,6 +14,8 @@ Windows-login acceptance without extending other profiles.
 | 8.5.1.1529 | Selected shipped-code authentication paths and 56 matching synthetic V3 exchanges reported in research | Complete TCP envelope or native live application compatibility |
 | Other installed 8.3 clients | Selected administration calls accepted by original clients against a synthetic peer | End-to-end support for servers of those builds |
 | HTTP(S) web publication | Separate route and authentication studies | Interchangeability with the native worker transport |
+| Public-spec Go consumer, web-18 | Legacy application login/logout and local cleanup passed after the published entry-parser correction | Native Legacy acceptance by this candidate; general reliability |
+| Public-spec Go consumer, web-22 V1 / web-27 V3 | One/two real credential challenges processed; final C3/C5 requests reached HTTP 500 application-start failures | Verified final credential result, successful application login/logout or universal error-code meaning |
 
 The eight-client administration comparison covers 8.3.12.1529, 8.3.17.1549,
 8.3.18.1208, 8.3.19.1522, 8.3.22.1709, 8.3.27.1859, 8.3.27.2130 and

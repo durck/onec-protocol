@@ -5,7 +5,8 @@ maintained implementation. Source files have neutral IDs, subject titles,
 claim IDs and SHA-256 in [sources.json](sources.json). The public manifest does
 not expose local paths, private repository names, machine identifiers or source
 excerpts. A separate unpublished receipt retains the source-location mapping.
-Hashes cover committed source bytes before checkout line-ending conversion.
+Each entry states its hash basis: committed source bytes before checkout
+line-ending conversion, or retained observation bytes where identified.
 
 The source repositories and raw evidence are **not bundled and may not be
 publicly accessible**. A hash binds an input; it does not independently verify
@@ -35,11 +36,13 @@ The [synthetic vectors](../vectors/README.md) are the reproducible public portio
 | E17 | Processing uploads, confirmation, chunks and storage | Build-18 bounded live subset; 18/27/85 source-derived chunk construction and ownership limits |
 | E18 | Route inventory, server roles and preauthentication surfaces | Static route contracts and bounded observations; no universal anonymous access or arbitrary execution |
 | E19 | [Independent public-spec Go client](../spec/20-independent-client.md) | Fresh-context public-input implementation, frozen before feedback; direct-worker and manager-discovery Windows login/logout passed on the authorized native-18 laboratory; separate password-readiness audit is synthetic only, with no new live password/provider-family coverage |
+| E20 | [Independent web password continuation](../spec/21-independent-web-auth.md) | Public-input client passed web Legacy login/logout on build 18; web V1/V3 challenges progressed on builds 22/27 but final application-start requests failed; no live V2 or completed SecPswd acceptance |
 
 ## Exact shipped inputs
 
 These are identities recorded by the source reports; no proprietary binary is
-included and no installed binary was executed for this publication.
+included. The original publication was offline; subsequent live experiments
+identify their server-runtime and implementation boundaries separately.
 
 | Build | File | SHA-256 |
 | --- | --- | --- |

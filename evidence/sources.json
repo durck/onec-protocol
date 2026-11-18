@@ -568,6 +568,24 @@
       "sha256": "feb830c15143148b0dfeae8bd98eaa8267fd9b306331eeb319c9c1ee2364570e",
       "source_id": "S063",
       "title": "Build-27 web application-start and cleanup failure structure"
+    },
+    {
+      "availability": "retained separately; not bundled",
+      "claim_id": "E13",
+      "hash_basis": "retained observation file bytes",
+      "kind": "sanitized publication entry observation",
+      "sha256": "d416dbb64dbabdd8a5f7710539cf82462fe962f9ec30ed35fcd77a8117e19715",
+      "source_id": "S064",
+      "title": "Build-18 semicolon-free VERSION declaration"
+    },
+    {
+      "availability": "bundled: independent-web-auth-2026-11-18.json",
+      "claim_id": "E20",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized independent web acceptance and failure summary",
+      "sha256": "df3589594fc1364abea735d831bf48d1302d2781231e27e6f2fe1bb0e907138c",
+      "source_id": "S065",
+      "title": "Independent web Legacy acceptance and bounded SecPswd V1/V3 attempts"
     }
   ]
 }

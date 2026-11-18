@@ -4,6 +4,10 @@
 
 ### Added
 
+- Independent web continuation: Legacy login/logout passed on build 18; V1/V3
+  processed real challenges on builds 22/27 but final application-start requests
+  failed. Six invocations, preserved first failures, separate cleanup outcomes
+  and reproducible frozen candidates are reported without publishing debug tests.
 - Observed semicolon-free VERSION declaration in the build-18 publication entry,
   with line-boundary and discovery-versus-login diagnostic requirements.
 - Bounded web application-start/cleanup exception patterns from a retained

@@ -6,6 +6,11 @@ HTTP orchestration. V1/V3 have original shipped-code comparison; V2 has
 schema/synthetic evidence only. Algorithms describe compatibility behavior,
 not recommended password-storage design.
 
+The [independent web experiment](21-independent-web-auth.md) later processed one
+real V1 challenge and two real V3 challenges. Final application-start requests
+failed without a verified final credential result; this is live progression,
+not completed SecPswd login acceptance. V2 remains without a live server test.
+
 ## Primitives
 
 `B8(x)=u8(byteLength(x)) || x`; `B32(x)=u32LE(byteLength(x)) || x`.

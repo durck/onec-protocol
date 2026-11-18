@@ -14,7 +14,7 @@ advertised version. For automatic selection, GET
 `scripts/mod_main_loader.js?sysver=<served-version>` and inspect, without
 executing it, the actual login construction/proof-consumption code.
 
-An observed served publication entry on build 8.3.18.1208 omits the semicolon
+An observed served publication entry on build 8.3.18.1208 (E13, S064) omits the semicolon
 after the quoted VERSION literal and continues with another `var` declaration
 on the next line. A bounded literal reader must preserve line boundaries:
 
@@ -129,9 +129,12 @@ number depends on whether settings supplied S2.
 The accepted application JSON has one non-`#` payload object with user and
 config fields and a retained session. Metadata keys beginning with `#` are
 separate from the application payload. Exceptions are not application objects.
-Password compliance statuses 2/4/6 require password change; 0/1/3/5 allow
-application readiness in the observed contract. Preserve the distinction
-between authenticated identity and application readiness.
+The optional integer field `passwordRequirementsComplianceStatus` belongs to
+that application payload. The retained reader treats absence as status 0;
+statuses 2/4/6 require password change, while 0/1/3/5 allow application readiness.
+Unknown statuses or malformed values do not establish readiness. Preserve the
+distinction between verified credential result and application readiness, and
+retain the session for cleanup if application validation fails after the proof.
 
 ## Failure and cleanup
 
@@ -183,5 +186,7 @@ GET `e1cib/about` with vrs-session is an observed informational operation; HTTP
 Basic authentication of OData/service-description routes does not create an
 application vrs-session. Keep Basic credentials separate from web login proof
 and cookies. Live Basic evidence exists for builds 18/27; live application login
-evidence is build-18 legacy. Web V1/V3 have synthetic acceptance; successful
-build-27 V3 application login remains unconfirmed.
+evidence includes the [independent build-18 Legacy check](21-independent-web-auth.md).
+That experiment also processed real web V1/V3 challenges on builds 22/27, but
+their final application-start requests failed. Completed web V1/V3 application
+login remains unconfirmed; synthetic acceptance is not promoted to live success.
