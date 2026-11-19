@@ -92,25 +92,25 @@ matching challenge state, verify the final result and application document, and
 record cleanup separately. This audit changes the evidence for profile choice;
 it adds no new wire fields, credential packets or live acceptance.
 
-## V2 and server-side selection remain bounded
+## V2 and server-side selection follow-up
 
 V2 server parsers/builders are present, but this pass did not establish a V2 C1
 choice in the three inspected desktop client-service bindings. That is not proof
 that V2 is unused by all native or mobile clients. `MobileClient` remains a
 studied compatibility label, not a universal command to force V2.
 
-The retained build-27 HTTP handler initializes a separate login-mode field to 2
-and assigns 1 in an admitted older MobileClient-related branch at version
-`<= 8.3.25.9999`. This is not yet a complete traced assignment to the credential
-state's `+0x150`: equal numeric values and a version comparison do not prove the
-cross-module handoff. Admission checks also remain applicable. Do not turn this
-partial server observation into an unconditional client/server compatibility
-matrix or a new query parameter.
+The subsequent [server-selector study](24-server-secpswd-selection.md), E24/S069,
+closes the exact build-27 handoff: a DWORD login mode passes through the server
+service into exchange-state `+0x150`. It establishes V2 for an admitted older
+mobile branch, with the exact case-sensitive user-agent classification, version
+bounds and exclusions. The selector is also preserved in continuation state.
+The original E23 summary retains the unresolved status of this earlier pass.
 
-Still unresolved: the complete server-side origin of the dispatcher field,
-native V2 client selection and live admission, every upstream login/resume
-branch, the precise release transition and general cross-version interoperability.
-The earlier V1/V3 web failures and licensing controls remain separate evidence.
+Still unresolved: native V2 desktop-client selection and live admission, every
+upstream login/resume branch, the precise release transition and general
+cross-version interoperability. The new server-side branch is not an automatic
+client negotiation rule or unconditional compatibility matrix. The earlier
+V1/V3 web failures and licensing controls remain separate evidence.
 
 ## Provenance and limits
 

@@ -613,6 +613,15 @@
       "sha256": "4405216a606798dd91de8e568ef2bc4ff105b8d20078b729449490f93acee716",
       "source_id": "S068",
       "title": "Native client bindings and separate server credential dispatch"
+    },
+    {
+      "availability": "bundled: server-secpswd-selection-2026-11-19.json",
+      "claim_id": "E24",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized static server-selector assignment summary",
+      "sha256": "de53f52be508b9679f45b9a0a4813e80b409a104fe24323cbb11c6402c969756",
+      "source_id": "S069",
+      "title": "Build-27 server SecPswd mode assignment and older-mobile V2 selection"
     }
   ]
 }

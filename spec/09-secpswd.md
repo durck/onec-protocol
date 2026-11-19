@@ -15,6 +15,10 @@ The [native profile audit](23-native-profile-selection.md) separately binds
 installed client-service C1 methods to V1 on exact builds 19/22 and V3 on build
 27. The internal server selector is distinct from those client method targets;
 the shared phase byte 1 cannot be used to discover the codec.
+The [server-selection follow-up](24-server-secpswd-selection.md) traces the
+build-27 older-mobile V2 choice and preservation of its selector across
+continuations. This adds static selection evidence, not a new runtime check of
+V2 cryptographic primitives or successful server authentication.
 
 ## Primitives
 

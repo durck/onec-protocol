@@ -21,6 +21,13 @@ ordinary build-27 client's C1 method. Do not send a guessed
 is specifically a **web settings** selector. V2's studied application label
 is `MobileClient`; other baseline examples use `1CV8C`.
 
+The [build-27 server-selection trace](24-server-secpswd-selection.md) now follows
+the request's native `userAgent` field and version checks through the backend
+argument to the credential selector. An admitted older mobile branch selects
+V2; newer admitted mobile and exact-version nonmobile branches select V3.
+Use that chapter's exclusions and scope, not the label alone. The value remains
+internal and the exact HTTP adapters are not all traced.
+
 These labels specify the studied request profiles, not a guarantee that a
 server admits them. A live-confirmed native server/build selection for each
 SecPswd variant is still missing from this independent-client experiment.

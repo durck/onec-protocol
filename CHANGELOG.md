@@ -4,6 +4,10 @@
 
 ### Added
 
+- Offline build-27 server SecPswd selection: trace request mode through service
+  registration/lookup to the credential dispatcher, specify older-mobile V2
+  version bounds/exclusions and preserve the selector across continuations.
+  Static selection remains separate from live authentication acceptance.
 - Offline native password-profile selection: bind exact build-19/22 client C1
   methods to V1 and build-27 to V3; distinguish fixed client construction from
   server-state dispatch and preserve V2/admission and live-acceptance limits.

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "claim_id": "E24",
+  "observed_date": "2026-11-19",
+  "classification": "offline static installed-artifact observations",
+  "build": "8.3.27.2342",
+  "architecture": "Windows x64",
+  "target_executions": 0,
+  "authentication_requests": 0,
+  "live_authentication_acceptance": false,
+  "modules": [
+    {"file": "vrsbase.dll", "sha256": "c7551bcf150ba4c1a727b2bccc39b40a7e0948c31497ff7258073f982c0bd290"},
+    {"file": "backend.dll", "sha256": "75d2c97c6675a4347d29fb32d3c6397f1d12e16ef13e1500fc1eea855a2e4e94"},
+    {"file": "backbas.dll", "sha256": "b0d90db7aa755c1ba7913a72afcdcce89f43605266af6fd2868d65cd6f5d3461"},
+    {"file": "core83.dll", "sha256": "83001ee41c5368a9ae6c73fd9a1a58fb2129db462cf882baceac4ce2877ef0d9"}
+  ],
+  "ingress": {
+    "constructor": "0x18009dc00",
+    "default_store": "0x18009ddbf",
+    "reader": "0x180093230",
+    "mode_field_byte_offset": "0x4d8",
+    "mode_width_bits": 32,
+    "default_mode": 2,
+    "mobile_classifier": {
+      "native_field_name": "userAgent",
+      "request_getter_slot": "0x30",
+      "login_state_field_offset": "0x1d8",
+      "match": "case-sensitive UTF-16 substring",
+      "needle": "MobileClient",
+      "matcher": "0x1801925f0",
+      "field_formatter": "0x180091a20",
+      "all_http_adapters_traced": false
+    },
+    "version_parameter": "version",
+    "mobile_version_min_inclusive": "8.3.9.1",
+    "mobile_version_max_inclusive": "8.3.27.2342",
+    "mobile_excluded_ranges": [
+      {"min_inclusive": "8.3.19.1095", "max_exclusive": "8.3.19.9999"},
+      {"min_inclusive": "8.3.23.0", "max_exclusive": "8.3.23.1838"},
+      {"min_inclusive": "8.3.24.0", "max_exclusive": "8.3.24.1151"}
+    ],
+    "admitted_mobile_v2_max_inclusive": "8.3.25.9999",
+    "admitted_mobile_v2_mode": 1,
+    "v2_store": "0x180093cbc",
+    "newer_admitted_mobile_mode": 2,
+    "nonmobile_version_rule": "exact string equality to 8.3.27.2342",
+    "nonmobile_admitted_mode": 2,
+    "version_rejection_helper": "0x180092e70",
+    "rejection_helper_throws": true,
+    "selector_zero_assignment_found_in_inspected_ingress": false,
+    "earlier_request_policy_and_later_login_checks_still_apply": true
+  },
+  "server_service": {
+    "iid": "f7399bd5-100e-4d0a-a5ce-f97810acfee9",
+    "class_id": "a6184631-6903-43e8-a83b-df238e43064e",
+    "getter": "0x18002a550",
+    "process_lookup_slot": "0x70",
+    "backend_registration_descriptor": "0x18195ff80",
+    "backend_factory_wrapper": "0x180802ca0",
+    "backend_factory": "0x180804770",
+    "backend_query_interface": "0x180805540",
+    "backend_interface_map": "0x1814519a0",
+    "backend_interface_subobject_offset": "0x18",
+    "backend_vtable": "0x18144e938",
+    "method_slot": "0x188",
+    "method_target": "0x1807f8390",
+    "ingress_call_sites": ["0x18009b4b1", "0x18009b951"],
+    "mode_argument_win64_abi_ordinal_including_implicit_arguments": 7,
+    "phase_pointer_argument_ordinal": 8,
+    "core_register_service": "0x180126e20",
+    "core_get_service": "0x180127470",
+    "static_registration_and_lookup_chain_established": true
+  },
+  "backend_assignment": {
+    "frame_base": "entryRSP - 0x1d8",
+    "exchange_state_base": "RBP - 0x20",
+    "incoming_mode_load": "0x1807f8525",
+    "incoming_mode_frame_offset": "0x210",
+    "selector_store": "0x1807f852b",
+    "selector_frame_offset": "0x130",
+    "selector_exchange_byte_offset": "0x150",
+    "selector_width_bits": 32,
+    "c1_provider_call": "0x1807f8556",
+    "phase2_routine": "0x1807f5900",
+    "s2_provider_call": "0x1807f6008"
+  },
+  "credential_dispatch": {
+    "iid": "b0ff7cc9-64b1-418f-a6b9-39a1098499a1",
+    "class_id": "62cc8b00-d8d3-4a95-8b33-a11aa4285682",
+    "backbas_registration_descriptor": "0x1807df7f0",
+    "backbas_factory_wrapper": "0x1800ffec0",
+    "backbas_factory": "0x180100920",
+    "static_registration_and_lookup_chain_established": true,
+    "backend_getter": "0x180170390",
+    "backbas_c1_slot": "0x50",
+    "backbas_s2_slot": "0x58",
+    "backbas_c1_dispatcher": "0x1800f88b0",
+    "backbas_s2_dispatcher": "0x1800fa3f0",
+    "selector_map": {"0": "V1", "1": "V2", "2": "V3"},
+    "other_values": "return failure",
+    "v2_c1_parser": "0x1800f76f0",
+    "v2_s2_builder": "0x1800f9820"
+  },
+  "continuation_state": {
+    "copy_helper": "0x180810170",
+    "selector_copy_load": "0x180810286",
+    "selector_copy_store": "0x18081028c",
+    "phase2_save_copy_call": "0x1807f62dc",
+    "restore_copy_call": "0x1807f86d5",
+    "session_property_key_address": "0x18199c330",
+    "order": "Try C1 using request mode; otherwise restore saved context, if present, before continuation parsing.",
+    "interpretation": "The saved selector governs continuation; this is not failed-proof codec fallback."
+  },
+  "supersedes": {
+    "claim_id": "E23",
+    "source_id": "S068",
+    "scope": "Resolves the exact-build ingress-to-exchange-state handoff and the older-mobile server V2 branch; preserves fixed desktop bindings and live-acceptance limits."
+  },
+  "fresh_ingress_evidence": [
+    "ev_9589f59c78be0ae083fa3333a55a07f05108c8c672a4b9d8f5a0b3b733491e69",
+    "ev_eb8ef02cbae0b9b5f582e1a3895e519c8e73b9ebe51aa95817f3aa9a1cd2f683",
+    "ev_99dd51bb2676221d4a9aa8255f3cd605040d461617cb20682b35a8f8de2e643d",
+    "ev_00fe2254ed96177a74f2cabbacd286e3140046d0ea667cd9345f5bfb377610e2",
+    "ev_ee5690535b6dff94bc6b8868a5d4f3ec2b28c908dc17ca66aaab7026ada589bf",
+    "ev_994afa7c42bf77348c5e9f42b486be46e3323ba08eba018b4d97cae902941ce7",
+    "ev_328882d20741ed92681c042023bfac119e510619ea947294d5268d0ca8bb74f9"
+  ],
+  "fresh_backend_evidence": [
+    "ev_c67a2a854216de07e372bc35018c59b21abaff66c727e2a2376477d19e0645be",
+    "ev_b78d78eb2dda2b961d365ff6ce013d5772210abce2d89ef40a0671bc4f3bed37",
+    "ev_eb12a884ea303fbb76c7c5387691725219de7d6cb241ee7646eb1e5ba5122542"
+  ],
+  "tools": {
+    "ghidra": "12.1.4",
+    "objdump": "2.46.0.20260210",
+    "method": "Fresh ingress/backend decompilation corroborated by bounded decoded instructions and PE tables; same-hash credential bindings reused and registration checked afresh.",
+    "owned_analysis_sessions_closed": true
+  },
+  "limitations": [
+    "Static assignment and dispatch are not successful authentication or byte-exact runtime oracle results.",
+    "Version gates do not cover all request, session, licensing or application admission checks.",
+    "Concrete HTTP adapters feeding the userAgent getter were not independently traced.",
+    "Malformed version parsing, all process configurations and every authentication/resume entry point remain unverified.",
+    "No V2 choice is established in the three desktop client bindings studied by E23.",
+    "No general wire negotiation, downgrade algorithm, first transition release or cross-version compatibility matrix is inferred.",
+    "V2 still has no live server acceptance; previous V1/V3 web results retain their original scopes."
+  ],
+  "publication_boundary": "Sanitized facts, vendor-module hashes and native addresses only; no proprietary code, disassembly, private paths, debug programs, credentials or captured authentication material."
+}

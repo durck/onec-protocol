@@ -88,7 +88,7 @@ the server build, selected profile and frozen client revision separately.
 | --- | --- |
 | Native Legacy | The studied native-18 handler consumes the credential query after the preliminary 402. It does not establish native SecPswd support. |
 | Native V1 | The published baseline uses `1CV8C`; exact installed 19.1522/22.1709 credential services construct V1 C1. This static result does not establish successful native V1 acceptance by the independent client. |
-| Native V2 | The studied label is `MobileClient`. That label alone does not establish that a particular server admits the profile or selects V2. |
+| Native V2 | The [exact build-27 server branch](24-server-secpswd-selection.md) selects V2 for a case-sensitive `MobileClient` user-agent match and admitted versions through 8.3.25.9999, subject to its exclusions. The label alone and static branch do not prove live acceptance. |
 | Native V3 | The baseline uses `1CV8C`; exact installed 27.2342 binds its password client to V3 methods. A newer advertised version does not implement its record policy or establish server acceptance. |
 | Web Legacy / V1 / V3 | Use the separate [publication contract](11-web-authentication.md). Loader observations identify request construction, not successful password acceptance. No web V2 orchestration is specified. |
 
@@ -98,8 +98,9 @@ claim native-27 readiness by changing its version string. The specification
 currently provides no native on-wire negotiation that chooses V1/V2/V3 and no
 general matrix of live-confirmed server/profile combinations for these modes.
 The [native selection audit](23-native-profile-selection.md) explains the
-fixed client-method bindings and the still-incomplete server-side selection path.
-Keep this missing qualification explicit; do not invent a query selector or
+fixed client-method bindings; its [server-side follow-up](24-server-secpswd-selection.md)
+resolves the exact build-27 older-mobile branch. Keep the remaining runtime
+qualification explicit; do not invent a query selector or
 try the same credential under successive schemes to discover it.
 
 For each qualified test, distinguish these outcomes:
