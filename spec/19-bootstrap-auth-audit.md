@@ -111,7 +111,10 @@ Web paths are publication-relative. Compute Content-Length from UTF-8 body
 bytes; header order and ordinary web-library headers are not prescribed here.
 The web version string is illustrative, not a claim that every illustrated
 codec is accepted by that exact build. Native V2 also uses the studied
-`MobileClient` application label when adding common headers.
+`MobileClient` label for both `User-Agent` and `1C-ApplicationName` when adding
+common headers. The [adapter trace](25-http-user-agent.md) establishes that
+`User-Agent` drives the inspected mobile classifier; the two equal example
+values do not make these headers interchangeable.
 
 The web prelogin examples deliberately give different header, outer-exception
 and inner-exception sessions: the last exact-case seanceID wins. A lowercase

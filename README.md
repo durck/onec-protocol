@@ -37,6 +37,7 @@ protocol. Newer-build observations have separate evidence labels.
 | [Offline bootstrap/authentication audit](spec/22-offline-auth-audit.md) | Native policy-state correction, older password-readiness field and source-versus-profile distinctions |
 | [Native password-profile selection](spec/23-native-profile-selection.md) | Exact native client-method bindings, separate server dispatch and remaining compatibility boundaries |
 | [Server SecPswd selection](spec/24-server-secpswd-selection.md) | Exact build-27 older-mobile V2 conditions, service-to-selector assignment and continuation state |
+| [HTTP user-agent adapters](spec/25-http-user-agent.md) | Exact build-27 User-Agent source, separate application-name header and IIS header forwarding |
 | [Evidence register](evidence/README.md) | Claim-to-source mapping and exact input identities |
 | [Synthetic vectors](vectors/README.md) | Machine-readable examples and offline checks |
 

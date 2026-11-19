@@ -4,6 +4,9 @@
 
 ### Added
 
+- Offline build-27 HTTP-adapter trace: identify User-Agent as the input to the
+  mobile classifier, distinguish 1C-ApplicationName, document IIS header
+  forwarding and clarify header-name versus value case rules.
 - Offline build-27 server SecPswd selection: trace request mode through service
   registration/lookup to the credential dispatcher, specify older-mobile V2
   version bounds/exclusions and preserve the selector across continuations.

@@ -25,8 +25,13 @@ The [build-27 server-selection trace](24-server-secpswd-selection.md) now follow
 the request's native `userAgent` field and version checks through the backend
 argument to the credential selector. An admitted older mobile branch selects
 V2; newer admitted mobile and exact-version nonmobile branches select V3.
-Use that chapter's exclusions and scope, not the label alone. The value remains
-internal and the exact HTTP adapters are not all traced.
+Use that chapter's exclusions and scope, not the label alone. The selector
+remains internal. The [HTTP-adapter trace](25-http-user-agent.md) establishes
+that the common build-27 request getter reads **User-Agent**, independently of
+`1C-ApplicationName`. For the studied mobile profile, set both headers to
+`MobileClient`; changing only `1C-ApplicationName` does not make this classifier
+mobile. Header names are case-insensitive; the `MobileClient` value match is
+case-sensitive. Other adapter/platform combinations remain unqualified.
 
 These labels specify the studied request profiles, not a guarantee that a
 server admits them. A live-confirmed native server/build selection for each

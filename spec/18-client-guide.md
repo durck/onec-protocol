@@ -88,7 +88,7 @@ the server build, selected profile and frozen client revision separately.
 | --- | --- |
 | Native Legacy | The studied native-18 handler consumes the credential query after the preliminary 402. It does not establish native SecPswd support. |
 | Native V1 | The published baseline uses `1CV8C`; exact installed 19.1522/22.1709 credential services construct V1 C1. This static result does not establish successful native V1 acceptance by the independent client. |
-| Native V2 | The [exact build-27 server branch](24-server-secpswd-selection.md) selects V2 for a case-sensitive `MobileClient` user-agent match and admitted versions through 8.3.25.9999, subject to its exclusions. The label alone and static branch do not prove live acceptance. |
+| Native V2 | The [exact build-27 server branch](24-server-secpswd-selection.md) selects V2 for a case-sensitive `MobileClient` match in **User-Agent** and admitted versions through 8.3.25.9999, subject to its exclusions. [Changing only 1C-ApplicationName does not supply this match](25-http-user-agent.md). Static selection does not prove live acceptance. |
 | Native V3 | The baseline uses `1CV8C`; exact installed 27.2342 binds its password client to V3 methods. A newer advertised version does not implement its record policy or establish server acceptance. |
 | Web Legacy / V1 / V3 | Use the separate [publication contract](11-web-authentication.md). Loader observations identify request construction, not successful password acceptance. No web V2 orchestration is specified. |
 

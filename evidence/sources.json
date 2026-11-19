@@ -622,6 +622,15 @@
       "sha256": "de53f52be508b9679f45b9a0a4813e80b409a104fe24323cbb11c6402c969756",
       "source_id": "S069",
       "title": "Build-27 server SecPswd mode assignment and older-mobile V2 selection"
+    },
+    {
+      "availability": "bundled: http-user-agent-2026-11-19.json",
+      "claim_id": "E25",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized static HTTP-adapter header provenance summary",
+      "sha256": "1a82a0b49e6f631453e8fdb62245e93245dc9e5b3d80e1a9c92c904e564ac82b",
+      "source_id": "S070",
+      "title": "Build-27 User-Agent mapping, IIS forwarding and separate application-name handling"
     }
   ]
 }

@@ -19,8 +19,10 @@ The mobile classification is a case-sensitive substring search for
 The reader tests that getter's field rather than directly looking up
 `1C-ApplicationName`; it does not require whole-string equality.
 The supplied `version` parameter is read from the request parameter map.
-The concrete HTTP adapters feeding the getter were not independently traced;
-this is not proof that every transport normalizes or populates it identically.
+The [HTTP-adapter follow-up](25-http-user-agent.md) binds this getter to the
+standard `User-Agent` header in the exact build-27 common request implementation
+and traces the IIS ingress separately. `1C-ApplicationName` does not substitute
+for it. This does not establish identical behavior in every transport.
 
 For the mobile branch, a successfully parsed version `V` must pass all of these
 version checks before the selector assignment:
