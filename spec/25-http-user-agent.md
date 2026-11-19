@@ -146,3 +146,8 @@ module hashes and claim boundaries. Raw vendor code, disassembly, research
 tools, private paths and authentication material are excluded. E24/S069 remains
 the historical selector-chain summary; E25 resolves its header-source gap only
 for the concrete routes established here.
+
+The [Apache comparison and safety review](26-apache-user-agent.md) extends the
+adapter study to three available Apache builds and traces the optional build-27
+header validator. E25/S070 remains the original IIS/common-request evidence;
+the follow-up does not turn these static observations into live acceptance.

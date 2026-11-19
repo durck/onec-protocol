@@ -631,6 +631,15 @@
       "sha256": "1a82a0b49e6f631453e8fdb62245e93245dc9e5b3d80e1a9c92c904e564ac82b",
       "source_id": "S070",
       "title": "Build-27 User-Agent mapping, IIS forwarding and separate application-name handling"
+    },
+    {
+      "availability": "bundled: apache-user-agent-2026-11-19.json",
+      "claim_id": "E26",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized static Apache-adapter comparison and bounded security review",
+      "sha256": "b3a9bd8f74a679f6855d0bf938d75048fe5321799b555fad2478488766eca7c1",
+      "source_id": "S071",
+      "title": "Nine Apache User-Agent routes, IIS comparison and validation/diagnostic boundaries"
     }
   ]
 }

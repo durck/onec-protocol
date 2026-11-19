@@ -4,6 +4,9 @@
 
 ### Added
 
+- Offline Apache User-Agent comparison across nine build18/27/85 artifacts:
+  trace APR forwarding, empty-header differences and common getter bindings;
+  document optional control-byte validation and bounded security-review results.
 - Offline build-27 HTTP-adapter trace: identify User-Agent as the input to the
   mobile classifier, distinguish 1C-ApplicationName, document IIS header
   forwarding and clarify header-name versus value case rules.
