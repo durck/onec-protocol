@@ -10,7 +10,8 @@ adds Legacy login/logout and incomplete V1/V3 challenge-to-final-request checks.
 | --- | --- | --- |
 | Windows x64 8.3.18.1208 native | Live baseline connection/Windows login, bounded application operation and cleanup; corrected multi-chunk upload; retained native reply; static serializer studies | Complete protocol, all authentication providers, arbitrary operations or platforms |
 | Public-spec Go consumer, native-18 lab | First frozen client passed direct-worker and manager-discovery Windows login/logout, with release acknowledgments | Live legacy/SecPswd acceptance in this experiment; a specific negotiated provider; general reliability or application execution |
-| Windows x64 8.3.27.2342 native | Static policy envelope; original COM client query/release against owned synthetic n-policy and c-policy peers | Real build-27 native server acceptance and complete application compatibility |
+| Windows x64 8.3.19.1522 / 8.3.22.1709 native | Static credential-service bindings and password-login callers construct V1 C1 | Successful native V1 acceptance by the independent client, every identity branch or general cross-version admission |
+| Windows x64 8.3.27.2342 native | Static V3 client-method/login binding and policy envelope; original COM client query/release against owned synthetic n-policy and c-policy peers | Real build-27 native server acceptance and complete application compatibility |
 | 8.5.1.1529 | Selected shipped-code authentication paths and 56 matching synthetic V3 exchanges reported in research | Complete TCP envelope or native live application compatibility |
 | Other installed 8.3 clients | Selected administration calls accepted by original clients against a synthetic peer | End-to-end support for servers of those builds |
 | HTTP(S) web publication | Separate route and authentication studies | Interchangeability with the native worker transport |

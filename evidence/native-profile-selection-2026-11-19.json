@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "claim_id": "E23",
+  "observed_date": "2026-11-19",
+  "classification": "offline static installed-artifact observations",
+  "architecture": "Windows x64",
+  "target_executions": 0,
+  "authentication_requests": 0,
+  "live_authentication_acceptance": false,
+  "client_credential_interface_iid": "b0ff7cc9-64b1-418f-a6b9-39a1098499a1",
+  "clients": [
+    {
+      "build": "8.3.19.1522",
+      "client_c1_profile": "V1",
+      "modules": [
+        {"file": "backbas.dll", "sha256": "db7eac2b96f5b00cf7f1c39cc589db04337f8d20b27871bd25e5955d4c8a2fe0"},
+        {"file": "mngcln.dll", "sha256": "6b281af8f442a17658a2f16b070b7b63350e14bae360c1c9a0e199fd6215c204"}
+      ],
+      "backbas_anchors": {
+        "factory": "0x1800eaf10",
+        "query_interface": "0x1800eb000",
+        "interface_map_helper": "0x1800c2a40",
+        "interface_map": "0x1804de890",
+        "iid": "0x1804de8c0",
+        "client_vtable": "0x1804de730",
+        "client_c1_slot": "0x48",
+        "client_c1_builder": "0x1800e5aa0",
+        "base64_call": "0x1800e5d15"
+      },
+      "mngcln_anchors": {
+        "service_getter": "0x1800bcba0",
+        "service_getter_wrapper": "0x1800b9910",
+        "login": "0x1800f3330",
+        "client_c1_call": "0x1800f5406",
+        "credential_body_writer": "0x1800f2bd0",
+        "client_final_check_slot": "0x78"
+      },
+      "fresh_rea_evidence": [
+        "ev_58111dd595dad02dcaaff8cac6feaf55e581a5ff217fb716716ae66c49469a57",
+        "ev_4ac0d93d470ef7c41d044dd02a2ddb182801da692252fd0f7660c10cf7745504",
+        "ev_ee3c21c523986f37549b9896e7369ed9dda9a7b528906a80100acc43b4c687e1",
+        "ev_fdd687d81ee50c5f135124366c068a19920f173c6d3bf2ece8ba8c5cec757b42"
+      ]
+    },
+    {
+      "build": "8.3.22.1709",
+      "client_c1_profile": "V1",
+      "modules": [
+        {"file": "backbas.dll", "sha256": "2078a7a923cbb7c70eb779b8e9c60d47cb0cc413bcbbc45b3868a053f02b815e"},
+        {"file": "mngcln.dll", "sha256": "fb66018b92adb13afddec22b75cc16eaa1f7f827f1381d58ff41a81a8c6358b4"}
+      ],
+      "backbas_anchors": {
+        "factory": "0x18014cd50",
+        "query_interface": "0x18014ce40",
+        "interface_map": "0x180604938",
+        "iid": "0x180604928",
+        "client_vtable": "0x1806047c0",
+        "client_c1_slot": "0x48",
+        "client_c1_builder": "0x180143790",
+        "base64_call": "0x180143b66"
+      },
+      "mngcln_anchors": {
+        "service_getter": "0x1800bbd70",
+        "service_getter_wrapper": "0x1800b88f0",
+        "login": "0x1800f6a40",
+        "client_c1_call": "0x1800f8b27",
+        "credential_body_writer": "0x1800f6160",
+        "client_final_check_slot": "0x80"
+      },
+      "analysis": "Bounded native instruction, interface-table, PE source-range and resolved import review; no fresh Ghidra import for this build."
+    },
+    {
+      "build": "8.3.27.2342",
+      "client_c1_profile": "V3",
+      "modules": [
+        {"file": "backbas.dll", "sha256": "b0d90db7aa755c1ba7913a72afcdcce89f43605266af6fd2868d65cd6f5d3461"},
+        {"file": "mngcln.dll", "sha256": "bfaaa1382d67305ff68373b1ce717553cac594dca410e742c65dc8db8be0d0bf"}
+      ],
+      "backbas_anchors": {
+        "factory": "0x180100920",
+        "query_interface": "0x180100aa0",
+        "interface_map_helper": "0x1800b9850",
+        "interface_map": "0x180668fe8",
+        "iid": "0x180669018",
+        "client_vtable": "0x180668c00",
+        "client_c1_slot": "0x48",
+        "client_c1_builder": "0x1800ed270",
+        "client_final_validator_slot": "0xa0",
+        "client_final_validator": "0x1800f5e70",
+        "server_c1_dispatch_slot": "0x50",
+        "server_c1_dispatch": "0x1800f88b0",
+        "server_s2_dispatch_slot": "0x58",
+        "server_s2_dispatch": "0x1800fa3f0"
+      },
+      "mngcln_anchors": {
+        "service_getter": "0x1800cd600",
+        "service_getter_wrapper": "0x1800c97a0",
+        "login": "0x18010a100",
+        "middle_exchange": "0x180109c60",
+        "client_slots": ["0x48", "0x60", "0x80", "0xa0"]
+      },
+      "fresh_rea_evidence": [
+        "ev_4b64bc2ca18bc3751f2ecbdc18a991a542bc1128aab25c92aea6712aa07175fd",
+        "ev_c693c8503b4556c4ebe24076bb69e16cfa56447190a709899162b5571180a0e5",
+        "ev_8f5ec164ce94ae488c6edc0aa9c3d4afc5ed493bd9472776e1b12051c690cffa",
+        "ev_6b9834727146f6073625ae969381f941652e586789e90bbd600c3ea0fb2f5116",
+        "ev_9d001b3d98c08bc84c2d31da5dad87597c852f6087aa1a5c5c51b86bd8783f98",
+        "ev_2d1f4c00900027fcd2e407d22facbae2c2d95819bee1eb58c9e20cd339a70ad9",
+        "ev_bafd4f18c0055c3d93615771cf1e4f4144d6c93263da3b953d9afaa944aec958"
+      ],
+      "retained_login_evidence": [
+        "ev_ea72aac535e0dfface575f53a1f10e9836b9e1bb94a74ecdd65b1c5e2778fb3a",
+        "ev_fe25a1f46667683922df6b3647e5451058252f166b9f92775e60f6463b404605",
+        "ev_9087879e4f0bc29df3ef99813c540347c12256e74ecdcaf2ae2937508c78a2f0",
+        "ev_dcf31f850ab33ddd5f8229d82f2700b1d991f87f3f0968cfdff0fda41273ebfd"
+      ]
+    }
+  ],
+  "partial_server_selection": {
+    "build": "8.3.27.2342",
+    "file": "vrsbase.dll",
+    "sha256": "c7551bcf150ba4c1a727b2bccc39b40a7e0948c31497ff7258073f982c0bd290",
+    "constructor": "0x18009dc00",
+    "login_reader": "0x180093230",
+    "login_mode_byte_offset": "0x4d8",
+    "constructor_default": 2,
+    "admitted_older_mobile_branch_value": 1,
+    "older_mobile_version_upper_bound": "8.3.25.9999",
+    "retained_evidence": [
+      "ev_c7c409bde06e6181c149629d7536d4ecdd9dff8a1e70f4d249acfa442882fe59",
+      "ev_7c2901ec38fd891993c608ed21f180118a4a3a98f68f59305ddcb507122200a5"
+    ],
+    "handoff_to_backbas_state_0x150_established": false
+  },
+  "tools": {
+    "ghidra": "12.1.4",
+    "objdump": "2.46.0.20260210",
+    "initial_mcp_calls_timed_out_at_seconds": 300,
+    "recovery": "Owned local REA sessions with a longer wait; no registration or target-application changes.",
+    "owned_analysis_sessions_closed": true
+  },
+  "limitations": [
+    "Static constructor, interface and field-order observations are not execution or byte-exact runtime oracle results.",
+    "Client-service bindings do not prove server admission or a general version matrix.",
+    "No automatic native wire-level V1/V2/V3 negotiation or downgrade algorithm is established.",
+    "V2 remains supported by inspected server handlers but without an established V2 choice in these three desktop client bindings.",
+    "The complete origin and handoff of the server dispatcher state remains unresolved.",
+    "The first format-changing release, all upstream identity/resume branches and general cross-version compatibility remain unverified.",
+    "Legacy native-18 acceptance and prior web results retain their original, separate evidence scopes."
+  ],
+  "publication_boundary": "Sanitized facts, module hashes and native addresses only; no proprietary code, disassembly, private paths, debug programs, credentials or captured authentication material."
+}

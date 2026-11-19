@@ -101,7 +101,9 @@ The [sanitized evidence summary](../evidence/offline-auth-audit-2026-11-19.json)
 records hashes, byte/address anchors, classifications and tool limits. Original
 code, decompilation, debug checks and private path mappings remain unpublished.
 
-Still open: qualified live V1/V2/V3 acceptance; native password-profile selection;
+The later [native profile audit](23-native-profile-selection.md) establishes
+exact-build client-method bindings; complete server-side selection remains open.
+Still open: qualified live V1/V2/V3 acceptance; broader native profile selection;
 native policy transitions and broader provider selection; full opaque bootstrap
 fields; non-ASCII compatibility across Unicode versions; MFA and password-change
 flows. This audit corrects specific implementation hazards and does not establish

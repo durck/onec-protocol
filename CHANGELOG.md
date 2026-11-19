@@ -4,6 +4,9 @@
 
 ### Added
 
+- Offline native password-profile selection: bind exact build-19/22 client C1
+  methods to V1 and build-27 to V3; distinguish fixed client construction from
+  server-state dispatch and preserve V2/admission and live-acceptance limits.
 - Offline installed-client audit: correct state-changing native policy markers
   and the older password-expiration field; qualify no-S2 C1 reuse, web JSON BOM
   handling and client-identifier lifetime without claiming new live acceptance.

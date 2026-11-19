@@ -8,10 +8,15 @@ original-code synthetic evidence, and V2 has schema/synthetic evidence.
 ## Common HTTP construction
 
 Select Windows, legacy, V1, V2 or V3 explicitly before submitting credentials.
+The [installed native-client audit](23-native-profile-selection.md) identifies
+V1 C1 methods in exact builds 19.1522/22.1709 and V3 in 27.2342. These client
+bindings are separate from the server's three-way credential dispatcher and do
+not establish live server compatibility or an automatic negotiation algorithm.
 No native on-wire scheme-negotiation parameter has been established here.
 An advertised build, successful settings request, or bootstrap ScalarType value
-does not by itself select SecPswd. Native implementation selectors 0/1/2 mean
-V1/V2/V3 internally; they are not extra HTTP fields. Do not send a guessed
+does not by itself select SecPswd. The inspected native **server-state** selectors
+0/1/2 mean V1/V2/V3 internally; they are not extra HTTP fields or a switch in the
+ordinary build-27 client's C1 method. Do not send a guessed
 `auth`, `code` or `version=1` parameter to force a native codec. The last form
 is specifically a **web settings** selector. V2's studied application label
 is `MobileClient`; other baseline examples use `1CV8C`.

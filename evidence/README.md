@@ -39,6 +39,7 @@ The [synthetic vectors](../vectors/README.md) are the reproducible public portio
 | E20 | [Independent web password continuation](../spec/21-independent-web-auth.md) | Public-input client passed web Legacy login/logout on build 18; web V1/V3 challenges progressed on builds 22/27 but final application-start requests failed; no live V2 or completed SecPswd acceptance |
 | E21 | [Stock web-client control](../spec/21-independent-web-auth.md#stock-web-client-control) | Stock build-22 browser client also reports unavailable licensing; stock build-27 credential attempt stopped before submission; no thin-client execution or successful SecPswd acceptance |
 | E22 | [Offline installed-client audit](../spec/22-offline-auth-audit.md) | Exact native policy-state and shipped web-source checks; no target execution, server contact or new live authentication acceptance |
+| E23 | [Native password-profile selection](../spec/23-native-profile-selection.md) | Installed native client-method bindings distinguished from server dispatch; static-only exact-build scope, unresolved V2 selection and server admission |
 
 ## Exact shipped inputs
 

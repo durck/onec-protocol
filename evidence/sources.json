@@ -1,5 +1,5 @@
 {
-  "prepared_on": "2026-11-18",
+  "prepared_on": "2026-11-19",
   "schema_version": 2,
   "sources": [
     {
@@ -604,6 +604,15 @@
       "sha256": "08a74e3bc2deebca88ac7af4f0743658bc8b6c4468cd402a00f0b467d049b3df",
       "source_id": "S067",
       "title": "Offline native policy-state and web readiness corrections"
+    },
+    {
+      "availability": "bundled: native-profile-selection-2026-11-19.json",
+      "claim_id": "E23",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized native client-profile audit summary",
+      "sha256": "4405216a606798dd91de8e568ef2bc4ff105b8d20078b729449490f93acee716",
+      "source_id": "S068",
+      "title": "Native client bindings and separate server credential dispatch"
     }
   ]
 }

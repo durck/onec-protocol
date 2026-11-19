@@ -4,7 +4,7 @@ An unofficial, evidence-based specification of the observed 1C:Enterprise
 client/server wire protocol, for developers building independent implementations
 and protocol analyzers. This project is not affiliated with 1C.
 
-**Status: expanded research draft, 2026-11-18.** The baseline is the native Windows x64
+**Status: expanded research draft, 2026-11-19.** The baseline is the native Windows x64
 **8.3.18.1208** path. This describes a bounded subset, not the complete platform
 protocol. Newer-build observations have separate evidence labels.
 
@@ -35,6 +35,7 @@ protocol. Newer-build observations have separate evidence labels.
 | [Independent client acceptance](spec/20-independent-client.md) | Fresh public-spec Go implementation and two bounded live Windows login/logout paths |
 | [Independent web password checks](spec/21-independent-web-auth.md) | Legacy login/logout, live V1/V3 challenge progression, final failures and public-first parser correction |
 | [Offline bootstrap/authentication audit](spec/22-offline-auth-audit.md) | Native policy-state correction, older password-readiness field and source-versus-profile distinctions |
+| [Native password-profile selection](spec/23-native-profile-selection.md) | Exact native client-method bindings, separate server dispatch and remaining compatibility boundaries |
 | [Evidence register](evidence/README.md) | Claim-to-source mapping and exact input identities |
 | [Synthetic vectors](vectors/README.md) | Machine-readable examples and offline checks |
 
