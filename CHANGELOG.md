@@ -4,6 +4,12 @@
 
 ### Added
 
+- Offline installed-client audit: correct state-changing native policy markers
+  and the older password-expiration field; qualify no-S2 C1 reuse, web JSON BOM
+  handling and client-identifier lifetime without claiming new live acceptance.
+- Stock web-client control: build 22 independently reports missing licensing;
+  build 27 was stopped before credentials. Live acceptance remains deferred;
+  browser UI evidence does not establish native-client or final-proof success.
 - Independent web continuation: Legacy login/logout passed on build 18; V1/V3
   processed real challenges on builds 22/27 but final application-start requests
   failed. Six invocations, preserved first failures, separate cleanup outcomes

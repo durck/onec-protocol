@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "claim_id": "E22",
+  "date": "2026-11-19",
+  "method": "Offline installed-artifact comparison, bounded source review and native disassembly/decompilation",
+  "target_code_executed": false,
+  "server_contacted": false,
+  "new_live_authentication_acceptance": false,
+  "web": {
+    "installed_modules": [
+      {
+        "build": "8.3.18.1208",
+        "carrier": "mngsrv_root.res",
+        "carrier_sha256": "646636386086d46fb6073b8b5a27eda4331840fd28b803e25cee4fee7cc03607",
+        "loader": "mod_main_loader.js",
+        "loader_offset": 1478112,
+        "loader_bytes": 3368748,
+        "loader_sha256": "619670c014d5de03f2862c20922a797a2f1ffd3e459d51915d071b12576d340d",
+        "password_expiration_field_occurrences": 0,
+        "password_compliance_field_occurrences": 0
+      },
+      {
+        "build": "8.3.19.1522",
+        "carrier": "mngsrv_root.res",
+        "carrier_sha256": "b73e4b7f6d5724c1e167a5beaa91b4fabe4aaf4a53a936c9eaeb2df3af7d7614",
+        "loader": "mod_main_loader.js",
+        "loader_offset": 1272432,
+        "loader_bytes": 3424295,
+        "loader_sha256": "7eb8ba1a53e52d1fb87d16982e6b9df10e3617db2ea152e5695c2785dea1a55b",
+        "password_expiration_field_occurrences": 0,
+        "password_compliance_field_occurrences": 0
+      },
+      {
+        "build": "8.3.22.1709",
+        "carrier": "mngsrv_root.res",
+        "carrier_sha256": "d8a158c259c3a459dc8b7f4cd2b3cafbb5724aa8754ee018d1288e27bee69b1f",
+        "loader": "mod_main_loader.js",
+        "loader_offset": 1212816,
+        "loader_bytes": 3497675,
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "password_expiration_field_occurrences": 1,
+        "password_compliance_field_occurrences": 0
+      },
+      {
+        "build": "8.3.27.2342",
+        "carrier": "mngsrv_root.res",
+        "carrier_sha256": "c6bef8435ce70ca744a8dee33198b42eba40fb17c61b272fac217b59a504a685",
+        "loader": "mod_main_loader.js",
+        "loader_offset": 1411504,
+        "loader_bytes": 3879161,
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "password_expiration_field_occurrences": 0,
+        "password_compliance_field_occurrences": 1
+      }
+    ],
+    "anchors": [
+      {
+        "id": "8.3.22.1709-status-readiness",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 647921,
+        "end_byte_exclusive": 648491,
+        "range_sha256": "d215c232685cc06dec3425552f1fe0ff598686ade22201c8d0a780baf5db9d06"
+      },
+      {
+        "id": "8.3.22.1709-status-constants",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 559335,
+        "end_byte_exclusive": 559351,
+        "range_sha256": "27209e12ad8c54b438bdaffc51b8230cfec7a4cef50dfd149220b7f522e4bbe5"
+      },
+      {
+        "id": "8.3.22.1709-c1-settings",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 269228,
+        "end_byte_exclusive": 269898,
+        "range_sha256": "4a26a66223d236e7f38f5c6e3cb3a07f1b10f704e731915529875af13f4b95e0"
+      },
+      {
+        "id": "8.3.22.1709-c1-generation",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 264293,
+        "end_byte_exclusive": 264559,
+        "range_sha256": "4216eb3fe1632da25195c86ca40b444b54cc485e8a008ff93e743c837b653686"
+      },
+      {
+        "id": "8.3.22.1709-login-state",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 644669,
+        "end_byte_exclusive": 645107,
+        "range_sha256": "00e70927b5a08e5d94e6e54f36d5432c233643ec8b77e7c3012617c9f00069bb"
+      },
+      {
+        "id": "8.3.22.1709-client-id",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 472558,
+        "end_byte_exclusive": 472644,
+        "range_sha256": "ca34f1919b9fbf54115d31556999c460dfd597f85eaaeb32ef37b441d5d5f3cf"
+      },
+      {
+        "id": "8.3.27.2342-c1-settings",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 297236,
+        "end_byte_exclusive": 297583,
+        "range_sha256": "55e467ab2efd8eda756c1f17d7a5a9877b5004c3c4b5083365b78e04f14190ef"
+      },
+      {
+        "id": "8.3.27.2342-settings-result",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 297583,
+        "end_byte_exclusive": 298244,
+        "range_sha256": "625875e54a6e549cc5a2b041d4054b555c0a0e0c0f9b92528baad7f027f271a7"
+      },
+      {
+        "id": "8.3.27.2342-c1-generation",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 290545,
+        "end_byte_exclusive": 290807,
+        "range_sha256": "8ef485abd8bd0eabeefe65b2ec2aa1e6859f0ae4a6316385674929910ca2d855"
+      },
+      {
+        "id": "8.3.27.2342-login-state",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 497666,
+        "end_byte_exclusive": 498120,
+        "range_sha256": "7321bbd8307fc7a89b0f2b9e60799ab8f5a6f521dd620b52e7d59ca2aecd4551"
+      },
+      {
+        "id": "8.3.27.2342-client-id",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 304220,
+        "end_byte_exclusive": 304306,
+        "range_sha256": "010c2f430b6bf79615142400a7dc9edf70324cad8590d285225b8fea2adae59e"
+      },
+      {
+        "id": "8.3.22.1709-status-ui",
+        "build": "8.3.22.1709",
+        "loader_sha256": "c05f8fcce0129c657fe1d6b44c86ce87dbf5637a83d8d5edf73dad7365237cae",
+        "start_byte": 555463,
+        "end_byte_exclusive": 556528,
+        "range_sha256": "d888966b0bcdbd8abdc1a84c6075fd74442bf211f3957f4c5fb0d21ac62c4750"
+      },
+      {
+        "id": "8.3.27.2342-modern-status-consumer",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 732907,
+        "end_byte_exclusive": 733418,
+        "range_sha256": "3cf7849b0189a50a83cce4cd17076d915eb730bf6e8bb048cbeadc8beb736c89"
+      },
+      {
+        "id": "8.3.27.2342-modern-status-ui",
+        "build": "8.3.27.2342",
+        "loader_sha256": "92e823c0728819f169fb66500aef5cf8db4f7e5c47442445b4c5756ac1b619b4",
+        "start_byte": 635125,
+        "end_byte_exclusive": 636286,
+        "range_sha256": "3143bc2fb941fe06c6daf15b5e3577d4969e75072072a729d48c3ac21bffc6b5"
+      }
+    ],
+    "verified_resource_count": 4,
+    "verified_excerpt_count": 14,
+    "parent_repeated_byte_verification": true,
+    "findings": [
+      "Older passwordExpirationStatus must be checked before applying a missing-modern-field default.",
+      "Credential codec alone does not select readiness schema.",
+      "No-S2 byte-identical C1 reuse is retained-client policy; inspected stock generators acquire fresh randomness.",
+      "Web JSON BOM clarification uses an existing observation, not new wire evidence.",
+      "clnId is reused through the login rather than regenerated per message."
+    ],
+    "analysis_limits": [
+      "Full-loader REA analysis timed out; no complete semantic graph is claimed.",
+      "Selected excerpts parsed, but an ambiguous property-flow trace did not establish complete outgoing relations.",
+      "Unknown/malformed/mixed readiness rejection and missing-both default are local client policies.",
+      "Neither no-S2 branch gains live acceptance from static construction."
+    ]
+  },
+  "native": {
+    "build": "8.3.27.2342",
+    "file": "rtrsrvc.dll",
+    "sha256": "ef8aac04965cafcf35252be1d3bfec237d88e52215f3db3b14c7e59b4d3ba310",
+    "provider": "Ghidra 12.1.4",
+    "anchors": [
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x180019470",
+        "evidence_id": "ev_dbf62c4235802c6b278919469ef77ab6afd6ba4e3abd97b7666a40d0d0bf3cb7"
+      },
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x180016de0",
+        "evidence_id": "ev_18f84a9f051779a9f0ecbf88aec36411bfcaeba29e98f24662bff9003d92c982"
+      },
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x180017bd0",
+        "evidence_id": "ev_1b3474bc464376869363f590392a20d73f7ba3db83a44ffd766674e1c3792cc6"
+      },
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x1800191e0",
+        "evidence_id": "ev_d4d0bf88780394f494a01c0343e05309da8d65610d2b2f5d481bf96290b1eb59"
+      },
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x180017200",
+        "evidence_id": "ev_3bbc7bf16a06db3600672320b0a0c59a5c6627eca4c2287889185926f3a8f8de"
+      },
+      {
+        "operation": "procedure_pseudo_code",
+        "procedure": "0x180016ea0",
+        "evidence_id": "ev_bbf95558187a5515009e59e1d1363528d24213dd89c415233c5fd4848cfea332"
+      },
+      {
+        "operation": "procedure_assembly",
+        "procedure": "0x180019470",
+        "evidence_id": "ev_190d7014ca13b927e0773dcf180743c21c7c49b4b626418a397eca69cd618706"
+      },
+      {
+        "operation": "procedure_assembly",
+        "procedure": "0x180016de0",
+        "evidence_id": "ev_bbb0f59901eeeee030f50c4feb5bace8ac663dee0d5b657c3e2a919b63c61874"
+      }
+    ],
+    "current_level_field_offset": 4,
+    "minimum_level_field_offset": 8,
+    "finding": "Native reply marker writes current level before checking minimum; subsequent request constructor reuses current state.",
+    "bounded_profile_correction": "Fixed-c subset requires marker 2; unsupported transitions fail and retire the connection.",
+    "limitations": [
+      "Native transition path is static evidence, not a newly executed native exchange.",
+      "Historical synthetic n/c exchanges used stable levels.",
+      "Full y and policy-transition behavior remains outside this profile.",
+      "Decompiler names/types can be inferred; assembly independently confirms the selected field write and comparison."
+    ],
+    "owned_analysis_session_closed": true
+  },
+  "publication_boundary": "Only sanitized facts, hashes and source coordinates are bundled; original code, decompilation, debug verification programs, raw responses and private source paths remain unpublished."
+}

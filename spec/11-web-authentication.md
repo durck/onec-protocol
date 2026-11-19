@@ -56,12 +56,22 @@ bounded recognizer, not a general JavaScript evaluator or server negotiation.
 
 All authentication requests in this profile use Accept application/json and
 Content-Type application/json; charset=utf-8. Keep cookies in the same session.
+Before parsing application, credential, settings or exception JSON, allow one
+optional UTF-8 BOM (`EF BB BF`) at the start of the decoded HTTP body. Apply the
+same rule to success and error responses. The retained build-27 observation
+included BOM-prefixed exception JSON; this does not relax JSON structure,
+credential-state or session validation.
 
 ## Login query
 
 ```text
 version=<served-version>&nowa=&nooida=&clnId=<fresh-client-uuid>
 ```
+
+Generate the bounded client's clnId once for its client context and reuse it
+across the login's requests; it is not a per-message cryptographic nonce.
+The inspected stock loaders can reuse a stored clientID. A fresh UUID per bounded
+client context is local policy, not a requirement that every login generate one.
 
 The HTTP library may serialize flags as empty values. The retained web query
 does not add native `vl=ru_RU`. Legacy adds cred containing standard padded
@@ -84,8 +94,9 @@ vrs-session, and require HTTP 200 plus a valid application JSON document.
    with body `{"cred":"<C1>"}` and the complete vrs-session header. V3 also
    adds query parameter `version=1`; this is a settings-format selector.
 6. Require HTTP 200. If the settings JSON contains cred, process it as S2 and
-   obtain C3. If cred is absent, keep the same C1 for the next login request.
-   This observed alternative does not select a weaker credential scheme.
+   obtain C3. If cred is absent, the retained client keeps the same C1 for the
+   next login request. This is its compatibility policy, qualified below;
+   the branch does not select a weaker credential scheme.
 
 For the retained session-selection rule, first capture a nonempty vrs-session
 header; an absent header leaves the current session unchanged. Then inspect the
@@ -106,8 +117,13 @@ to stay constant. Do not overwrite a retained session with an absent header.
 The 19/22 **POST-with-C1** settings contract supersedes an earlier GET description.
 Both V1 and V3 use POST here. If settings supplies S2, V1 needs one subsequent
 login POST (C3), and V3 needs two (C3,C5). Without S2, the counts are two
-(C1,C3) and three (C1,C3,C5), respectively. Do not create a second codec or fresh
-C1 when moving from settings to login.
+(C1,C3) and three (C1,C3,C5), respectively. The retained implementation and
+public synthetic no-S2 transcript keep C1 byte-identical. The inspected stock
+22/27 loaders instead call their C1 generator again when settings supplied no
+S2, obtaining fresh randomness. Neither no-S2 branch gains live server acceptance
+from this source audit. Do not present byte identity as universal stock behavior.
+In every case, keep the state of the C1 that actually receives S2; **never
+regenerate C1 or its nonces after accepting that challenge**.
 
 The reference accepts a raw UUID session or Base64 (standard/URL alphabet,
 padded or unpadded) whose first decoded 36 bytes are a UUID. Preserve the full
@@ -129,12 +145,27 @@ number depends on whether settings supplied S2.
 The accepted application JSON has one non-`#` payload object with user and
 config fields and a retained session. Metadata keys beginning with `#` are
 separate from the application payload. Exceptions are not application objects.
-The optional integer field `passwordRequirementsComplianceStatus` belongs to
-that application payload. The retained reader treats absence as status 0;
-statuses 2/4/6 require password change, while 0/1/3/5 allow application readiness.
-Unknown statuses or malformed values do not establish readiness. Preserve the
-distinction between verified credential result and application readiness, and
+Readiness has at least two observed integer-field contracts in that payload:
+
+| Field | Inspected client | Values and application readiness |
+| --- | --- | --- |
+| `passwordExpirationStatus` | 8.3.22.1709 | 0 permits continuation; 1 warns of expiry and permits ignoring the warning; 2 requires a password change before application startup |
+| `passwordRequirementsComplianceStatus` | 8.3.27.2342 | 0 permits continuation; 1/3/5 permit continuing past a warning; 2/4/6 require a password change |
+
+Check both recognized names before applying any missing-status default. SecPswd
+V1/V3 does not by itself select the readiness schema. For example, the complete
+inspected 8.3.19 V1 loader contains neither field literal; this is a bounded
+source observation, not proof of absent server-side password policies.
+
+Treating absence of **both** fields as zero is retained-client compatibility
+policy, not a demonstrated default of every stock client. It must not hide
+`passwordExpirationStatus: 2` merely because the newer field is absent. A
+bounded client should reject unknown/malformed values or both fields together
+as unsupported readiness contracts; no mixed-field precedence was established.
+That conservative rejection policy is separate from observed stock behavior.
+Preserve verified credential result separately from application readiness, and
 retain the session for cleanup if application validation fails after the proof.
+These source-backed distinctions are detailed in the [offline audit](22-offline-auth-audit.md).
 
 ## Failure and cleanup
 

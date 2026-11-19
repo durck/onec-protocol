@@ -586,6 +586,24 @@
       "sha256": "df3589594fc1364abea735d831bf48d1302d2781231e27e6f2fe1bb0e907138c",
       "source_id": "S065",
       "title": "Independent web Legacy acceptance and bounded SecPswd V1/V3 attempts"
+    },
+    {
+      "availability": "bundled: stock-web-control-2026-11-18.json",
+      "claim_id": "E21",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized stock browser-client control summary",
+      "sha256": "0d3da5a98224acd5786f5edd84ea790217c9ec7a8399550cfae8a9a15050ba94",
+      "source_id": "S066",
+      "title": "Stock V1 licensing obstacle and deferred stock V3 control"
+    },
+    {
+      "availability": "bundled: offline-auth-audit-2026-11-19.json",
+      "claim_id": "E22",
+      "hash_basis": "committed source bytes before checkout newline conversion",
+      "kind": "sanitized installed-artifact audit summary",
+      "sha256": "08a74e3bc2deebca88ac7af4f0743658bc8b6c4468cd402a00f0b467d049b3df",
+      "source_id": "S067",
+      "title": "Offline native policy-state and web readiness corrections"
     }
   ]
 }

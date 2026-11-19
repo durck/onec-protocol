@@ -68,12 +68,30 @@ Effective n: payloads are plain RPC. Effective c:
    `u64LE(iv) = (u64LE(iv) + u64LE(increment)) mod 2^64`.
 2. Encrypt ASCII 2 followed by RPC, with fresh padding.
 3. Decrypt the corresponding response using the **same IV**, no extra increment.
-4. Require ASCII marker 0/1/2 meeting the configured minimum, remove it, and
-   pass the remaining nonempty bytes to RPC.
-5. Keep the negotiated effective level; a response marker does not replace it.
+4. For this fixed-c subset, require ASCII marker **2**, remove it, and pass the
+   remaining nonempty bytes to RPC. Reject 0/1 as unsupported policy transitions,
+   even if they meet the configured minimum; do not continue with stale c state.
+5. Keep effective c only after that check. Minimum-level validation remains
+   separate from whether a transition is implemented.
 
 No new header accompanies ordinary exchanges. The first c request after
 negotiation uses iv+increment, not the initial IV.
+
+### Reply markers can change native state
+
+The [offline audit](22-offline-auth-audit.md) corrected an earlier overbroad
+rule that accepted any marker meeting the minimum while keeping the initial
+effective level. In exact build 8.3.27.2342, the native reader maps ASCII 0/1/2
+to numeric 0/1/2 and **writes that value into the current policy state** before
+checking the minimum. The later request builder consults that same state.
+Thus a permitted marker change cannot safely be ignored.
+
+The described fixed-c subset deliberately does not implement these transitions.
+It rejects markers other than 2 and retires the connection; this is a local
+restriction, not a claim that the native reader rejects every 0/1 marker.
+The original n/c synthetic-peer observations used stable levels and therefore
+do not establish runtime acceptance of level changes. Full transition behavior,
+including y, remains outside this subset.
 
 ## Synchronization
 

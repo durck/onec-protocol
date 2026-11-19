@@ -34,6 +34,7 @@ protocol. Newer-build observations have separate evidence labels.
 | [Bootstrap/authentication audit](spec/19-bootstrap-auth-audit.md) | Corrected ambiguities, complete synthetic sessions and remaining implementation limits |
 | [Independent client acceptance](spec/20-independent-client.md) | Fresh public-spec Go implementation and two bounded live Windows login/logout paths |
 | [Independent web password checks](spec/21-independent-web-auth.md) | Legacy login/logout, live V1/V3 challenge progression, final failures and public-first parser correction |
+| [Offline bootstrap/authentication audit](spec/22-offline-auth-audit.md) | Native policy-state correction, older password-readiness field and source-versus-profile distinctions |
 | [Evidence register](evidence/README.md) | Claim-to-source mapping and exact input identities |
 | [Synthetic vectors](vectors/README.md) | Machine-readable examples and offline checks |
 

@@ -117,6 +117,32 @@ operations successful. All task-owned publication processes/supervisors and thei
 listeners were absent after cleanup; the existing native server remained running
 with its original process identity. No application data operation was performed.
 
+## Stock web-client control
+
+Evidence: E21, S066. On 2026-11-18 the stock browser client supplied by the same
+8.3.22.1709 publication was opened with the same existing test account. One
+credential submission produced an explicit **license-not-found** startup error.
+The automatic-repeat countdown was cancelled and the exit page was observed.
+This independently confirms a licensing obstacle on that V1 fixture. It does
+not establish successful authentication, full request equivalence or correctness
+of every independent-client message. The earlier shape-only diagnosis remains
+the evidence limit of the independent executable itself.
+
+The 8.3.27.2342 publication's served version was verified and its stock page was
+opened, but the operator stopped the campaign before credentials were entered.
+There is no new V3 stock-login result. Installed thin-client executables were
+not run in this control; the stock browser client and native thin client are
+different scopes. No packet trace was collected, so no stock wire-level request
+count or final exception tuple is inferred from the UI.
+
+All owned tabs, publications and supervisors were closed. Configuration and
+installed client-file hashes were unchanged, as was the existing native service
+identity. The exit page and fixture shutdown are not protocol logout ACKs.
+The [sanitized control summary](../evidence/stock-web-control-2026-11-18.json)
+contains no account identities, screenshots, endpoints or authentication material.
+Further live V1/V3 acceptance is deferred until a suitable licensed deployment
+is available; offline source and synthetic checks can continue independently.
+
 Remaining work: completed V1/V3 application acceptance on qualified deployments,
 native V2 admission/transport qualification and live acceptance, native password
 coverage for this independent client, and broader provider/version behavior.

@@ -37,6 +37,8 @@ The [synthetic vectors](../vectors/README.md) are the reproducible public portio
 | E18 | Route inventory, server roles and preauthentication surfaces | Static route contracts and bounded observations; no universal anonymous access or arbitrary execution |
 | E19 | [Independent public-spec Go client](../spec/20-independent-client.md) | Fresh-context public-input implementation, frozen before feedback; direct-worker and manager-discovery Windows login/logout passed on the authorized native-18 laboratory; separate password-readiness audit is synthetic only, with no new live password/provider-family coverage |
 | E20 | [Independent web password continuation](../spec/21-independent-web-auth.md) | Public-input client passed web Legacy login/logout on build 18; web V1/V3 challenges progressed on builds 22/27 but final application-start requests failed; no live V2 or completed SecPswd acceptance |
+| E21 | [Stock web-client control](../spec/21-independent-web-auth.md#stock-web-client-control) | Stock build-22 browser client also reports unavailable licensing; stock build-27 credential attempt stopped before submission; no thin-client execution or successful SecPswd acceptance |
+| E22 | [Offline installed-client audit](../spec/22-offline-auth-audit.md) | Exact native policy-state and shipped web-source checks; no target execution, server contact or new live authentication acceptance |
 
 ## Exact shipped inputs
 

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "claim_id": "E21",
+  "observed_date": "2026-11-18",
+  "scope": "Stock browser clients supplied by the same file publications used by the independent web experiment.",
+  "controls": [
+    {
+      "build": "8.3.22.1709",
+      "profile": "web/v1",
+      "served_version_verified": true,
+      "same_publication_and_existing_test_account": true,
+      "credential_submissions": 1,
+      "ui_result": "license_not_found",
+      "application_accepted": false,
+      "automatic_repeat_cancelled_before_countdown_expired": true,
+      "exit_page_observed": true,
+      "protocol_logout_acknowledgment_observed": false
+    },
+    {
+      "build": "8.3.27.2342",
+      "profile": "web/v3",
+      "served_version_verified": true,
+      "credential_submissions": 0,
+      "outcome": "stopped_before_credentials_at_operator_request"
+    }
+  ],
+  "installed_thin_client_executions": 0,
+  "limitations": [
+    "This control used stock browser code, not the installed thin-client executable or native TCP bootstrap.",
+    "The V1 fixture also fails with the stock browser client and explicitly reports unavailable licensing.",
+    "The result does not verify the independent client's final credential result, complete protocol equivalence or successful application acceptance.",
+    "No new V3 stock credential attempt or V2 acceptance is established.",
+    "No packet trace was collected for this control; exact stock request count and final wire error tuple are not asserted.",
+    "Further live acceptance is deferred until a suitable licensed deployment is available."
+  ],
+  "cleanup": {
+    "owned_browser_tabs_remaining": 0,
+    "owned_publication_processes_and_supervisors_remaining": 0,
+    "owned_publication_listeners_remaining": 0,
+    "existing_native_service_running_with_unchanged_identity": true,
+    "publication_configuration_and_installed_client_files_unchanged": true,
+    "account_service_license_platform_or_os_settings_changed": false
+  }
+}

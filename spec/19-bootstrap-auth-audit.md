@@ -26,7 +26,7 @@ retained implementation: this was **not a blind clean-room implementation**.
 | Native credential selection could be mistaken for negotiation | Guessed query parameters or automatic version-based downgrades | Explicit profile selection; internal selectors are not HTTP fields |
 | Native HTTP identity/header roles were underspecified | Worker address/SPN substituted into application headers; HTTP library additions | Logical ServerName, encapsulated HTTP headers, origin-form target and body termination specified |
 | Web prelogin appeared to require a body seanceID | Header-only routing sessions rejected, or lowercase factor seanceid used as application sid | Header capture followed by exact-case outer-to-inner seanceID precedence |
-| Settings could be read as GET or a separate codec exchange | Missing C1, regenerated randomness or wrong number of login requests | V1/V3 POST C1; retain codec whether settings returns S2 or no credential |
+| Settings could be read as GET or a separate codec exchange | Missing C1, mismatched challenge state or wrong number of login requests | V1/V3 POST C1; preserve state after S2; no-S2 byte identity is the retained transcript's policy, qualified by the later offline audit |
 | Web session replacement was not distinguished from native routing stability | Stale sid after a web response, or improper rejection of rotation | Retain full replacement session and recompute web sid; native intermediate UUID remains stable |
 | XML, native JSON and web JSON acceptance were conflated | Unnecessary required fields or acceptance before final proof | Separate validators and a minimal synthetic XML document |
 | V1 key deduplication could be applied to V2; V3 flag relationships were implicit | Missing second encrypted V2 alternative or invented V3 equality requirement | Specify both V2 candidates and independently validated V3 flags |
@@ -122,7 +122,11 @@ Every logout carries the **whole** final encoded session, not its UUID prefix.
 
 For a settings response without cred, C1 is byte-identical in settings and
 the first login. When settings supplies S2, the first login is C3. No flow
-regenerates a nonce or starts a new codec at that boundary.
+in this synthetic corpus regenerates a nonce or starts a new codec at that
+boundary. The later [installed-client audit](22-offline-auth-audit.md) found
+that stock 22/27 loaders generate a fresh C1 on the no-S2 branch. The existing
+corpus remains a retained-client profile, not a claim of exact stock byte identity
+or server acceptance of either branch. Never reset state after receiving S2.
 
 ## Rejection cases
 
